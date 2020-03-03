@@ -193,6 +193,9 @@ public class AssignmentOnePartThree {
      */
     public int range(int[] values) {
         //Answer here
+        if (values.length == 1)
+            return values[0];
+
         int max = values[0], min = values[0];
         for (int v : values) {
             if (v > max)
@@ -200,7 +203,6 @@ public class AssignmentOnePartThree {
             if (v < min)
                 min = v;
         }
-        // return max == min ? max : max - min;
         return max - min;
         //
     }
