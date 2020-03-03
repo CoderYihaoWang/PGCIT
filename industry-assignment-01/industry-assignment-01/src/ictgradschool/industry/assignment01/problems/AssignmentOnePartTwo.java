@@ -1,5 +1,7 @@
 package ictgradschool.industry.assignment01.problems;
 
+import java.util.Arrays;
+
 /**
 * Please run TestAssignmentOnePartTwo to check your answers.
 * There are 10 exercises in this class. They are ordered roughly in increasing order of difficulty.
@@ -9,7 +11,7 @@ package ictgradschool.industry.assignment01.problems;
 *
 * You may modify the code in between the comments: // Answer here // . Do not modify other parts of the code.
  *
- * Write your name and UPI here: name and UPI.
+ * Write your name and UPI here: Yihao Wang, wany969.
 */
 public class AssignmentOnePartTwo {
 
@@ -19,7 +21,10 @@ public class AssignmentOnePartTwo {
      */
     public int countDigits(int number) {
         // Answer here
-        return 0;
+
+        // not the most efficient,
+        // but not a big deal since the number of digits in an integer is never too large
+        return ("" + number).replace("-", "").length();
         //
     }
 
@@ -31,7 +36,11 @@ public class AssignmentOnePartTwo {
      */
     public boolean isLeapYear(int year) {
         // Answer here
-        return false;
+
+        // the following solution is verbatim as the solution in K&R's
+        // The C Programing Language e2. See Section 2.5
+        // it is elegant
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         //
     }
 
@@ -43,7 +52,12 @@ public class AssignmentOnePartTwo {
      */
     public int factorial(int n) {
         // Answer here
-       return 0;
+        if (n < 0)
+            return 0;
+        int fac = 1;
+        while (n > 1)
+            fac *= n--;
+        return fac;
         //
     }
 
@@ -55,7 +69,16 @@ public class AssignmentOnePartTwo {
      */
     public boolean isPrime(int num) {
         // Answer here
-        return false;
+        if (num <= 1)
+            return false;
+        if (num == 2)
+            return true;
+        // it is enough to test up to the square root of num
+        // the square root is rounded up to avoid rounding errors
+        for (int i = 2; i <= Math.ceil(Math.sqrt(num)); ++i)
+            if (num % i == 0)
+                return false;
+        return true;
         //
     }
 
@@ -65,7 +88,12 @@ public class AssignmentOnePartTwo {
      */
     public String reverseString(String str) {
         // Answer here
-        return "";
+        char[] chars = str.toCharArray();
+        // for performance
+        StringBuilder sb = new StringBuilder();
+        for (int i = chars.length - 1; i >= 0; --i)
+            sb.append(chars[i]);
+        return sb.toString();
         //
     }
 
@@ -75,7 +103,12 @@ public class AssignmentOnePartTwo {
      */
     public int gcd(int num1, int num2) {
         // Answer here
-        return 0;
+
+        // Euclidean Algorithm
+        // it works as well when num1 < num2
+        if (num2 == 0)
+            return num1;
+        return gcd(num2, num1 % num2);
         //
     }
 
@@ -87,7 +120,13 @@ public class AssignmentOnePartTwo {
      */
     public boolean isIntPalindrome(int number) {
         // Answer here
-        return false;
+        // remove negative sign
+        String str = ("" + number).substring(number < 0 ? 1 : 0);
+
+        for (int i = 0; i < str.length() / 2; ++i)
+            if (str.charAt(i) != str.charAt(str.length() - i - 1))
+                return false;
+        return true;
         //
     }
 
@@ -98,7 +137,9 @@ public class AssignmentOnePartTwo {
      */
     public String sortNumbersByAscending(int num1, int num2, int num3, int num4) {
         // Answer here
-        return "";
+        int[] arr = new int[]{num1, num2, num3, num4};
+        Arrays.sort(arr);
+        return arr[0] + "," + arr[1] + "," + arr[2] + "," + arr[3];
         //
     }
 
@@ -116,7 +157,11 @@ public class AssignmentOnePartTwo {
      */
     public String simpleMultiplicationTable(int num) {
         // Answer here
-        return "";
+        StringBuilder table = new StringBuilder();
+        for (int i = 1; i <= num; ++i)
+            for (int j = 1; j <= num; ++j)
+                table.append(i * j).append(j == num ? '\n' : ' ');
+        return table.toString().substring(0, table.length() - 1);
         //
     }
 
@@ -128,7 +173,19 @@ public class AssignmentOnePartTwo {
      */
     public String printPrimeNumbers(int num) {
         // Answer
-        return "";
+        if (num < 2)
+            return "No prime number found";
+
+        StringBuilder primes = new StringBuilder();
+        boolean[] visited = new boolean[num + 1];
+        for (int i = 2; i <= num; ++i) {
+            if (!visited[i]) {
+                primes.append(i).append(' ');
+                for (int j = i; j <= num; j += i)
+                    visited[j] = true;
+            }
+        }
+        return primes.toString().stripTrailing();
         //
     }
 }

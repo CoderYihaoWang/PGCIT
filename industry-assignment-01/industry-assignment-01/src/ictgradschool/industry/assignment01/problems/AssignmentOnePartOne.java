@@ -9,7 +9,7 @@ package ictgradschool.industry.assignment01.problems;
  *
  * You may modify the code in between the comments: // Answer here // . Do not modify other parts of the code.
  *
- * Write your name and UPI here: name and UPI.
+ * Write your name and UPI here: Yihao Wang, wany969.
  */
 public class AssignmentOnePartOne {
 
@@ -20,7 +20,8 @@ public class AssignmentOnePartOne {
     public int divideTwoInts(int dividend, int divisor) {
         int quotient = 0;
         // Answer here
-
+        // allows division by zero error to happen naturally
+        quotient = dividend / divisor;
         //
         return quotient;
     }
@@ -33,6 +34,10 @@ public class AssignmentOnePartOne {
         int product = 0;
         // Answer here
 
+        // using Math.round makes more sense than a direct casting,
+        // which does not provide the commonly expected result
+        // the provided test cases are not sufficient to decide whether to truncate or round
+        product = (int)Math.round(multiplicand * multiplier);
         //
         return product;
     }
@@ -43,7 +48,7 @@ public class AssignmentOnePartOne {
      */
     public int maxOfTwoNumbers(int numberOne, int numberTwo) {
         // Answer here
-        return 0;
+        return Math.max(numberOne, numberTwo);
         //
     }
 
@@ -53,7 +58,7 @@ public class AssignmentOnePartOne {
      */
     public String convertCharToString(char character) {
         // Answer here
-        return "";
+        return "" + character;
         //
     }
 
@@ -63,7 +68,7 @@ public class AssignmentOnePartOne {
      */
     public String getFirstThreeLetters(String text) {
         // Answer here
-        return "";
+        return text.substring(0, 3);
         //
     }
 
@@ -74,7 +79,7 @@ public class AssignmentOnePartOne {
      */
     public boolean legalToBuyDrinks(int age) {
         // Answer here
-        return false;
+        return age >= 18;
         //
     }
 
@@ -85,7 +90,7 @@ public class AssignmentOnePartOne {
      */
     public boolean eligibleToVote(boolean nzResident, int age) {
         // Answer here
-        return false;
+        return nzResident && age >= 18 && age <= 150;
         //
     }
 
@@ -96,7 +101,8 @@ public class AssignmentOnePartOne {
      */
     public boolean implies(boolean a, boolean b) {
         //Answer here
-        return false;
+        // a -> b  |=|  !a || b
+        return !a || b;
         //
     }
 
@@ -111,7 +117,18 @@ public class AssignmentOnePartOne {
      */
     public String isSubstring(String firstStr, String secondStr) {
         //Answer here
-        return "";
+
+        // removing white spaces
+        firstStr = firstStr.replaceAll("\\s+", "");
+        secondStr = secondStr.replaceAll("\\s+", "");
+
+        if (firstStr.equals(secondStr))
+            return "Same string";
+        if (firstStr.contains(secondStr))
+            return "Second string is a substring of first string";
+        if (secondStr.contains(firstStr))
+            return "First string is a substring of second string";
+        return "No match";
         //
     }
 
@@ -122,7 +139,24 @@ public class AssignmentOnePartOne {
      */
     public int medianOfThreeInts(int numOne, int numTwo, int numThree) {
         // Answer here
-       return 0;
+
+        // first sort numOne and numTwo into ascending order
+        if (numOne > numTwo) {
+            int temp = numOne;
+            numOne = numTwo;
+            numTwo = temp;
+        }
+
+        // if numThree is between numOne and numTwo, it is the median
+        if (numThree > numOne && numThree < numTwo)
+            return numThree;
+
+        // if numThree is the smallest, numOne is the median
+        if (numThree <= numOne)
+            return numOne;
+
+        // otherwise numThree is the largest, and median is numTwo
+        return numTwo;
         //
     }
 }

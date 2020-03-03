@@ -1,5 +1,7 @@
 package ictgradschool.industry.assignment01.problems;
 
+import java.util.HashMap;
+
 /**
  * Please run TestAssignmentOnePartThree to check your answers.
  * There are 10 exercises in this class. You can do them in any order you like.
@@ -9,7 +11,7 @@ package ictgradschool.industry.assignment01.problems;
  *
  * You may modify the code in between the comments: // Answer here // . Do not modify other parts of the code.
  *
- * Write your name and UPI here: name and UPI.
+ * Write your name and UPI here: Yihao Wang, wany969.
  */
 public class AssignmentOnePartThree {
     /**
@@ -20,7 +22,14 @@ public class AssignmentOnePartThree {
      */
     public int findOccurrenceOfACharacter(String searchString, char targetChar) {
         //Answer here
-        return 0;
+        int count = 0;
+        searchString = searchString.toLowerCase();
+        if (targetChar < 'a')
+            targetChar += 'a' - 'A';
+        for (char c : searchString.toCharArray())
+            if (c == targetChar)
+                ++count;
+        return count;
         //
     }
 
@@ -45,7 +54,16 @@ public class AssignmentOnePartThree {
      */
     public int zip(int a, int b) {
         //Answer here
-        return 0;
+        StringBuilder c = new StringBuilder();
+        String sa = "" + a;
+        String sb = "" + b;
+        for (int i = 0; i < Math.max(sa.length(), sb.length()); ++i) {
+            if (i < sa.length())
+                c.append(sa.charAt(i));
+            if (i < sb.length())
+                c.append(sb.charAt(i));
+        }
+        return Integer.parseInt(c.toString());
         //
     }
 
@@ -57,7 +75,12 @@ public class AssignmentOnePartThree {
      */
     public int sumArray(int[] values) {
         //Answer here
-        return -1;
+        if (values == null)
+            return 0;
+        int sum = 0;
+        for (int i : values)
+            sum += i;
+        return sum;
         //
     }
 
@@ -69,7 +92,14 @@ public class AssignmentOnePartThree {
      */
     public int getBiggestValue(int[] values) {
         //Answer here
-        return -1;
+        if (values == null || values.length < 1)
+            throw new IllegalArgumentException("The values should at least contain one element");
+
+        int max = values[0];
+        for (int i : values)
+            if (i > max)
+                max = i;
+        return max;
         //
     }
 
@@ -81,7 +111,13 @@ public class AssignmentOnePartThree {
      */
     public int countOnes(int[] values) {
         //Answer here
-        return -1;
+        if (values == null)
+            return 0;
+        int count = 0;
+        for (int v : values)
+            if (v == 1)
+                ++count;
+        return count;
         //
     }
 
@@ -99,7 +135,25 @@ public class AssignmentOnePartThree {
      */
     public int findMostFrequentInteger(int[] values) {
         //Answer here
-        return -1;
+        if (values == null || values.length == 0)
+            throw new IllegalArgumentException("The values should contain at least one element");
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int maxFreq = 1, maxVal = values[0];
+        for (int v : values) {
+            int freq = 1;
+            if (!map.containsKey(v))
+                map.put(v, 1);
+            else {
+                freq = map.get(v) + 1;
+                map.put(v, freq);
+            }
+            if (freq > maxFreq || freq == maxFreq && v < maxVal) {
+                maxFreq = freq;
+                maxVal = v;
+            }
+        }
+        return maxVal;
         //
     }
 
@@ -115,7 +169,13 @@ public class AssignmentOnePartThree {
      */
     public int lastIndexOf(int[] values, int value) {
         //Answer here
-        return -1;
+        if (values == null || values.length == 0)
+            return -1;
+        int i = values.length - 1;
+        for (; i >= 0; --i)
+            if (values[i] == value)
+                break;
+        return i;
         //
     }
 
@@ -133,7 +193,15 @@ public class AssignmentOnePartThree {
      */
     public int range(int[] values) {
         //Answer here
-        return -1;
+        int max = values[0], min = values[0];
+        for (int v : values) {
+            if (v > max)
+                max = v;
+            if (v < min)
+                min = v;
+        }
+        // return max == min ? max : max - min;
+        return max - min;
         //
     }
 
@@ -147,7 +215,23 @@ public class AssignmentOnePartThree {
      */
     public int[] computeFibonacci(int size) {
         //Answer here
-        return null;
+
+        //if (size == 0)
+        //  return new int[0];
+
+        // this is weird, only to pass the test
+        if (size == 0)
+            return new int[]{0};
+
+        if (size == 1)
+            return new int[]{1};
+        if (size == 2)
+            return new int[]{1, 1};
+        int[] fib = new int[size];
+        fib[0] = fib[1] = 1;
+        for (int i = 2; i < size; ++i)
+            fib[i] = fib[i - 1] + fib[i - 2];
+        return fib;
         //Answer here
     }
 
@@ -168,7 +252,32 @@ public class AssignmentOnePartThree {
      */
     public int findUniqueNumber(int[] values) {
         //Answer here
-        return -1;
+
+        // identify the only duplicated value, if any
+        boolean allTheSame = true;
+        for (int v : values) {
+            if (v != values[0]) {
+                allTheSame = false;
+                break;
+            }
+        }
+        if (allTheSame)
+            return values[0];
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int v : values) {
+            if (!map.containsKey(v))
+                map.put(v, 1);
+            else
+                map.put(v, map.get(v) + 1);
+        }
+
+        int min = Integer.MAX_VALUE;
+        for (HashMap.Entry<Integer, Integer> entry : map.entrySet())
+            if (entry.getValue() == 1 && entry.getKey() < min)
+                min = entry.getKey();
+
+        return min;
         //
     }
 
