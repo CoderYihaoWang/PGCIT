@@ -20,6 +20,7 @@ public class AssignmentOnePartOne {
     public int divideTwoInts(int dividend, int divisor) {
         int quotient = 0;
         // Answer here
+
         // allows division by zero error to happen naturally
         quotient = dividend / divisor;
         //
@@ -35,8 +36,8 @@ public class AssignmentOnePartOne {
         // Answer here
 
         // using Math.round makes more sense than a direct casting,
-        // which does not provide the commonly expected result
-        // the provided test cases are not sufficient to decide whether to truncate or round
+        // the latter does not provide the commonly expected result
+        // the provided test cases, however, are not sufficient to decide whether to truncate or round
         product = (int)Math.round(multiplicand * multiplier);
         //
         return product;
@@ -101,6 +102,7 @@ public class AssignmentOnePartOne {
      */
     public boolean implies(boolean a, boolean b) {
         //Answer here
+
         // a -> b  |=|  !a || b
         return !a || b;
         //
@@ -139,6 +141,12 @@ public class AssignmentOnePartOne {
      */
     public int medianOfThreeInts(int numOne, int numTwo, int numThree) {
         // Answer here
+
+        // could just put the three numbers in an array and Arrays.sort it
+        // but in fact, java's library sorting algorithm itself relies on an algorithm
+        // to find the median of three medians
+        // obviously if we are trying to write that piece of code, we cannot
+        // rely on any exiting sorting methods, that would be infinite recursion
 
         // first sort numOne and numTwo into ascending order
         if (numOne > numTwo) {

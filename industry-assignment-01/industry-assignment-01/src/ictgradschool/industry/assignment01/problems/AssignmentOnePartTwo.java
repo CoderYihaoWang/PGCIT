@@ -22,8 +22,8 @@ public class AssignmentOnePartTwo {
     public int countDigits(int number) {
         // Answer here
 
-        // not the most efficient,
-        // but not a big deal since the number of digits in an integer is never too large
+        // should not first negate the number if it is negative
+        // because -Integer.MIN_VALUE < 0
         return ("" + number).replace("-", "").length();
         //
     }
@@ -37,9 +37,11 @@ public class AssignmentOnePartTwo {
     public boolean isLeapYear(int year) {
         // Answer here
 
-        // the following solution is verbatim as the solution in K&R's
+        // the following solution is verbatim as a piece of code from K&R's
         // The C Programing Language e2. See Section 2.5
-        // it is elegant
+        // It really shocked me when I first read it, so simple, so clear
+        // actually the brackets are redundant, && binds tighter than ||
+        // but they help clarify the logic
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         //
     }
@@ -52,11 +54,15 @@ public class AssignmentOnePartTwo {
      */
     public int factorial(int n) {
         // Answer here
+
+        // factorial is overflow-prone
+        // uses Math.multiplyExact instead of * to detect overflows
+        // it throws an ArithmeticException on overflow
         if (n < 0)
             return 0;
         int fac = 1;
         while (n > 1)
-            fac *= n--;
+            fac = Math.multiplyExact(fac, n--);
         return fac;
         //
     }
@@ -88,11 +94,11 @@ public class AssignmentOnePartTwo {
      */
     public String reverseString(String str) {
         // Answer here
-        char[] chars = str.toCharArray();
+
         // for performance
         StringBuilder sb = new StringBuilder();
-        for (int i = chars.length - 1; i >= 0; --i)
-            sb.append(chars[i]);
+        for (int i = str.length() - 1; i >= 0; --i)
+            sb.append(str.charAt(i));
         return sb.toString();
         //
     }
@@ -103,6 +109,8 @@ public class AssignmentOnePartTwo {
      */
     public int gcd(int num1, int num2) {
         // Answer here
+
+        // it does not say recursion is forbidden
 
         // Euclidean Algorithm
         // it works as well when num1 < num2
@@ -120,6 +128,7 @@ public class AssignmentOnePartTwo {
      */
     public boolean isIntPalindrome(int number) {
         // Answer here
+
         // remove negative sign
         String str = ("" + number).substring(number < 0 ? 1 : 0);
 
@@ -140,6 +149,31 @@ public class AssignmentOnePartTwo {
         int[] arr = new int[]{num1, num2, num3, num4};
         Arrays.sort(arr);
         return arr[0] + "," + arr[1] + "," + arr[2] + "," + arr[3];
+
+        //  the following is a genius solution modified from
+        //      https://algs4.cs.princeton.edu/21elementary/Sort4.java.html
+        //  it sorts four elements with only 5 comparisons and exchanges!
+        //
+        //  -- code begins --
+        //  if (num1 > num2) { int t = num2; num2 = num1; num1 = t; }
+        //  if (num3 > num4) { int t = num4; num4 = num3; num3 = t; }
+        //  if (num1 > num3) { int t = num3; num3 = num1; num1 = t; }
+        //  if (num2 > num4) { int t = num4; num4 = num2; num2 = t; }
+        //  if (num2 > num3) { int t = num3; num3 = num2; num2 = t; }
+        //  return num1 + "," + num2 + "," + num3 + "," + num4;
+        //  -- code ends --
+        //
+        //  And I can prove that this solution is the most optimized, in terms of
+        //  numbers of comparisons and exchanges:
+        //
+        //  The number of possible outcomes of sorting four numbers is 4! = 24
+        //  If we draw a decision tree to represent the paths to these outcomes,
+        //  with the outcomes being leaves,
+        //  then the height of the tree,
+        //  which represent numbers comparisons and possible exchanges, is log24,
+        //  the smallest integer above log24 is 5
+        //  that means you cannot find a solution with fewer comparisons to cover all the possible outcomes
+        //
         //
     }
 
@@ -157,11 +191,15 @@ public class AssignmentOnePartTwo {
      */
     public String simpleMultiplicationTable(int num) {
         // Answer here
+        if (num < 1)
+            throw new IllegalArgumentException("The size must be at least 1");
+
         StringBuilder table = new StringBuilder();
         for (int i = 1; i <= num; ++i)
             for (int j = 1; j <= num; ++j)
                 table.append(i * j).append(j == num ? '\n' : ' ');
-        return table.toString().substring(0, table.length() - 1);
+        table.setLength(table.length() - 1);
+        return table.toString();
         //
     }
 
@@ -176,16 +214,18 @@ public class AssignmentOnePartTwo {
         if (num < 2)
             return "No prime number found";
 
+        // sieve of Eratosthenes
         StringBuilder primes = new StringBuilder();
         boolean[] visited = new boolean[num + 1];
         for (int i = 2; i <= num; ++i) {
             if (!visited[i]) {
                 primes.append(i).append(' ');
-                for (int j = i; j <= num; j += i)
+                for (int j = i + i; j <= num; j += i)
                     visited[j] = true;
             }
         }
-        return primes.toString().stripTrailing();
+        primes.setLength(primes.length() - 1);
+        return primes.toString();
         //
     }
 }

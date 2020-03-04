@@ -57,7 +57,8 @@ public class AssignmentOnePartThree {
         StringBuilder c = new StringBuilder();
         String sa = "" + a;
         String sb = "" + b;
-        for (int i = 0; i < Math.max(sa.length(), sb.length()); ++i) {
+        int maxLen = Math.max(sa.length(), sb.length());
+        for (int i = 0; i < maxLen; ++i) {
             if (i < sa.length())
                 c.append(sa.charAt(i));
             if (i < sb.length())
@@ -75,7 +76,7 @@ public class AssignmentOnePartThree {
      */
     public int sumArray(int[] values) {
         //Answer here
-        if (values == null)
+        if (values == null || values.length == 0)
             return 0;
         int sum = 0;
         for (int i : values)
@@ -92,7 +93,7 @@ public class AssignmentOnePartThree {
      */
     public int getBiggestValue(int[] values) {
         //Answer here
-        if (values == null || values.length < 1)
+        if (values == null || values.length == 0)
             throw new IllegalArgumentException("The values should at least contain one element");
 
         int max = values[0];
@@ -138,6 +139,7 @@ public class AssignmentOnePartThree {
         if (values == null || values.length == 0)
             throw new IllegalArgumentException("The values should contain at least one element");
 
+        // O(n) algorithm
         HashMap<Integer, Integer> map = new HashMap<>();
         int maxFreq = 1, maxVal = values[0];
         for (int v : values) {
@@ -200,7 +202,7 @@ public class AssignmentOnePartThree {
         for (int v : values) {
             if (v > max)
                 max = v;
-            if (v < min)
+            else if (v < min)
                 min = v;
         }
         return max - min;
@@ -218,6 +220,7 @@ public class AssignmentOnePartThree {
     public int[] computeFibonacci(int size) {
         //Answer here
 
+        // this is what will make more sense:
         //if (size == 0)
         //  return new int[0];
 
