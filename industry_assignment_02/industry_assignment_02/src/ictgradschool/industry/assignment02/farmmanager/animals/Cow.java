@@ -7,7 +7,7 @@ package ictgradschool.industry.assignment02.farmmanager.animals;
  *
  * @author write your name and UPI here.
  */
-public class Cow extends Animal {
+public class Cow extends Animal implements IProductionAnimal {
     private final int MAX_VALUE = 1500;
 
     public Cow() {
@@ -30,5 +30,15 @@ public class Cow extends Animal {
 
     public String toString() {
         return getType() + " - $" + value;
+    }
+
+    @Override
+    public boolean harvestable() {
+        return value == MAX_VALUE;
+    }
+
+    @Override
+    public int harvest() {
+        return harvestable() ? 20 : 0;
     }
 }
