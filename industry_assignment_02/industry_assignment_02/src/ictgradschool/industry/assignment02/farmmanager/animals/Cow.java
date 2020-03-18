@@ -5,7 +5,7 @@ package ictgradschool.industry.assignment02.farmmanager.animals;
  * The cost to feed a cow is $50.
  * You may modify this class according to the assignment.
  *
- * @author write your name and UPI here.
+ * @author Yihao Wang, wany969
  */
 public class Cow extends Animal implements IProductionAnimal {
     private final int MAX_VALUE = 1500;

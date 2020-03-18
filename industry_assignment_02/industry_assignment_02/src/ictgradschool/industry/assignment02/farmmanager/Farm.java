@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * This class consists of methods for the farm operations.
  *
- * @author Write your name and UPI here.
+ * @author Yihao Wang, wany969
  */
 public class Farm {
     private Animal[] animals;
