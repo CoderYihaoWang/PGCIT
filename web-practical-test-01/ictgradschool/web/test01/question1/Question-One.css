@@ -1,0 +1,53 @@
+@font-face {
+    src: url("assets/Catamaran-Regular.ttf");
+    font-family: Catamaran;
+}
+
+body {
+    background-color: gainsboro;
+    font-family: Catamaran, sans-serif;
+}
+
+#your-choice {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    padding: 20px;
+    box-shadow: lightslategray 5px 5px 5px;
+}
+
+.image {
+    float: left;
+    padding: 2px;
+    border: dotted 1px lightslategray;
+    margin-right: 10px;
+}
+
+th, td {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: oldlace;
+}
+
+tr:nth-of-type(even) {
+    background-color: gainsboro;
+}
+
+thead > tr:first-of-type > th {
+    border-top: solid 1px black;
+}
+
+thead > tr:last-of-type > th,
+tbody > tr:last-of-type > td {
+    border-bottom: solid 1px black;
+}
