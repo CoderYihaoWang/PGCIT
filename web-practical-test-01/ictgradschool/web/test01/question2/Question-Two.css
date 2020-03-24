@@ -21,12 +21,15 @@ body {
     margin-right: 30px;
 }
 
+img {
+    vertical-align: bottom;
+}
+
 .content {
     background-color: lightblue;
     width: 1280px;
     margin: auto;
     position: relative;
-    height: 842px; /* clear the little blue line at the bottom */
 }
 
 .tree {
