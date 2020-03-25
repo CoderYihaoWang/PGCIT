@@ -1,0 +1,264 @@
+h1, h2 {
+    color: #fff
+}
+
+h2, h3 {
+    letter-spacing: 1px;
+    line-height: 1em
+}
+
+a, body, input, textarea {
+    color: #333
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+article, div, figure, footer, header, li, nav, section {
+    position: relative
+}
+
+.group:after {
+    display: block;
+    height: 0;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    visibility: hidden
+}
+
+::-moz-selection {
+    background: #333;
+    color: #fff
+}
+
+::selection {
+    background: #333;
+    color: #fff
+}
+
+body {
+    font-family: tablet-gothic, verdana, arial, sans-serif;
+    background: #77c4d3
+}
+
+h2, h3 {
+    font-family: tablet-gothic-condensed, "arial narrow", arial, verdana, sans-serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400
+}
+
+h1 {
+    background: #ea2e49;
+    display: inline-block;
+    padding: .5em 1em
+}
+
+h2 {
+    font-weight: 900;
+    font-size: 6em
+}
+
+h3 {
+    font-size: 2.25em;
+    font-weight: 200;
+    padding: .5em 0 .25em
+}
+
+a {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    text-decoration: none;
+    -moz-transition: border-color .2s ease-in-out;
+    -ms-transition: border-color .2s ease-in-out;
+    -o-transition: border-color .2s ease-in-out;
+    -webkit-transition: border-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out
+}
+
+a:hover {
+    border-color: #ea2e49
+}
+
+div.explanation p a, div.participation p a, section.intro div.summary p a {
+    color: #fff
+}
+
+div.participation p a:hover {
+    border-color: #fff
+}
+
+li, p {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    padding: .5em 0
+}
+
+div.requirements p:last-child, h1, section.intro div.summary p {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase
+}
+
+div.requirements p:last-child, section.intro div.summary p:last-child {
+    border-top: 1px solid #ea2e49;
+    margin-top: 1em;
+    padding-top: 1.5em
+}
+
+html {
+    padding: 3.5rem;
+}
+
+section.intro {
+    padding: 3rem;
+}
+em, strong {
+    font-style: normal;
+    font-weight: 400
+}
+
+html {
+    background: #daede2
+}
+
+div.page-wrapper {
+    z-index: 2
+}
+
+section.intro div.summary {
+    color: #fff;
+    padding: 15% 0
+}
+
+section.intro div.preamble {
+    background: rgba(255, 255, 255, .9);
+    color: #333;
+}
+
+div.preamble {
+    margin-left: -6.5rem;
+    padding: 2rem 2rem 2rem 6.5rem;
+}
+
+aside.sidebar, footer {
+    background: rgba(246, 247, 146, .9);
+}
+
+aside.sidebar {
+    float: right;
+    position: absolute;
+}
+
+aside.sidebar {
+    padding: 2.5rem;
+}
+
+div.main {
+    padding: 3rem;
+}
+aside.sidebar ul {
+    padding: .5em 0 2em
+}
+
+aside.sidebar ul li {
+    color: rgba(0, 0, 0, .4);
+    list-style: none;
+    margin: 0;
+    padding: 0 0 .825em
+}
+
+footer {
+    clear: both;
+    color: #fff;
+    padding: 1em 5%;
+    width: 50%;
+}
+
+footer a {
+    margin-right: .5em
+}
+
+#zen-supporting > div {
+    padding: 2.5rem;
+}
+
+div.explanation {
+    color: #fff;
+}
+
+div.participation {
+    background: rgba(234, 46, 73, .9);
+    color: #fff;
+}
+
+div.benefits, div.requirements {
+    background: rgba(255, 255, 255, .9);
+}
+
+div.benefits {
+}
+
+h2 {
+    font-size: 8em
+}
+
+section.intro {
+    width: 68%;
+}
+
+aside.sidebar {
+    right: 0;
+    top: 2.5%;
+}
+
+div.extra1 {
+    background: rgba(51, 55, 69, .9);
+    bottom: 0;
+    right: 0;
+    top: 0;
+    z-index: 1
+}
+
+div.explanation {
+    float: left;
+    width: 50%;
+}
+
+div.participation {
+    float: right;
+    width: 50%;
+}
+
+div.benefits, div.requirements {
+}
+
+div.benefits {
+    float: left;
+    width: 30%;
+    top: 15em;
+}
+
+div.requirements {
+    float: right;
+    width: 70%;
+}
+
+body {
+    font-size: 1vw;
+}
+
+.extra1 {
+    width: 29vw;
+    height: 50vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
