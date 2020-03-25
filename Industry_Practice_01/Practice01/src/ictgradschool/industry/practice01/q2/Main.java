@@ -3,10 +3,8 @@ package ictgradschool.industry.practice01.q2;
 public class Main {
     public void start() {
         // TODO Step 6. Declare an array of Aeroplane objects (named planes)
-
-        
         // TODO Step 7. Construct the array of 10 Aeroplane objects
-        
+        Aeroplane[] planes = new Aeroplane[10];
         
         // Initialise the array of Aeroplane objects
         fillPlanesArray(planes);
@@ -35,14 +33,19 @@ public class Main {
     
     // TODO Step 8.  Write the printPlanesArray() method
     private void printPlanesArray(Aeroplane[] planes) {
-
+        for (Aeroplane plane : planes)
+            System.out.println(plane);
     }
     
     
     
     // TODO Step 9.  Write the getOldestAeroplane() method.
     private Aeroplane getOldestAeroplane(Aeroplane[] planes) {
-
+        Aeroplane oldest = planes[0];
+        for (Aeroplane plane : planes)
+            if (plane.isOlderThan(oldest))
+                oldest = plane;
+        return oldest;
     }
 
     public static void main(String[] args) {
