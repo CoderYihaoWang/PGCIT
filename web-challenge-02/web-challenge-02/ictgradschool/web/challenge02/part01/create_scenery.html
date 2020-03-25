@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Compose your own scenic sea, sky and dolphins image</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="create_scenery.css">
+        <script src="create_scenery.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <img id="background" src="../images/dolphins/background1.jpg" alt="background image" title="background image">
+
+            <!-- dolphins -->
+            <img id="dolphin1" class="dolphin" src="../images/dolphins/dolphin1.png" alt="dolphin 1" title="dolphin 1">
+            <img id="dolphin2" class="dolphin" src="../images/dolphins/dolphin2.png" alt="dolphin 2" title="dolphin 2">
+            <img id="dolphin3" class="dolphin" src="../images/dolphins/dolphin3.png" alt="dolphin 3" title="dolphin 3">
+            <img id="dolphin4" class="dolphin" src="../images/dolphins/dolphin4.png" alt="dolphin 4" title="dolphin 4">
+            <img id="dolphin5" class="dolphin" src="../images/dolphins/dolphin5.png" alt="dolphin 5" title="dolphin 5">
+            <img id="dolphin6" class="dolphin" src="../images/dolphins/dolphin6.png" alt="dolphin 6" title="dolphin 6">
+            <img id="dolphin7" class="dolphin" src="../images/dolphins/dolphin7.png" alt="dolphin 7" title="dolphin 7">
+            <img id="dolphin8" class="dolphin" src="../images/dolphins/dolphin8.png" alt="dolphin 8" title="dolphin 8">
+        </div>
+
+        <div class="control-area">
+            <form>
+                <div id="choose-background">
+                    <fieldset>
+                        <legend>Pick a background</legend>
+                        <input type="radio" name="radio" id="radio-background1" checked="checked"><label for="radio-background1">no sea, just sky</label>
+                        <input type="radio" name="radio" id="radio-background2"><label for="radio-background2">clouds and sea</label>
+                        <input type="radio" name="radio" id="radio-background3"><label for="radio-background3">open sea</label>
+                        <input type="radio" name="radio" id="radio-background4"><label for="radio-background4">tranquil</label>
+                        <input type="radio" name="radio" id="radio-background5"><label for="radio-background5">hint of rainbow</label>
+                        <input type="radio" name="radio" id="radio-background6"><label for="radio-background6">moving water</label>
+                    </fieldset>
+                </div>
+
+                <div id="toggle-components">
+                    <fieldset>
+                        <legend>Choose dolphin(s) to display</legend>
+                        <input type="checkbox" id="check-dolphin1" checked="checked"><label for="check-dolphin1">diving down</label>
+                        <input type="checkbox" id="check-dolphin8"><label for="check-dolphin8">jumping up</label>
+                        <input type="checkbox" id="check-dolphin5"><label for="check-dolphin5">take off</label>
+                        <input type="checkbox" id="check-dolphin3"><label for="check-dolphin3">jumping together</label>
+                        <input type="checkbox" id="check-dolphin6"><label for="check-dolphin6">hourglass dolphins</label>
+                        <input type="checkbox" id="check-dolphin4"><label for="check-dolphin4">back flip</label>
+                        <input type="checkbox" id="check-dolphin2"><label for="check-dolphin2">soaring</label>
+                        <input type="checkbox" id="check-dolphin7"><label for="check-dolphin7">dusky dolphin</label>
+                    </fieldset>
+                </div>
+
+                <div id="adjust-components">
+                    <fieldset>
+                        <legend>Adjust dolphin(s)</legend>
+
+                        <label for="vertical-control">vertical shift:</label>
+                        <input id="vertical-control" type="range" min="-100" max="100" value="0"><br>
+
+                        <label for="size-control">size:</label>
+                        <input id="size-control" type="range" min="-100" max="100" value="0"><br>
+
+                        <label for="horizontal-control">horizontal shift:</label>
+                        <input id="horizontal-control" type="range" min="-100" max="100" value="0"><br>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

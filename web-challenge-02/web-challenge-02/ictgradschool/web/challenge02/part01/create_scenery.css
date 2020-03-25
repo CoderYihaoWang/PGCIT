@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* centred container to ensure images are centred */
+div#container {
+    margin: auto;
+    padding: 0;
+
+    /* absolutely positioned elements within this container div will be positioned relative to this container's origin */
+    position: relative;
+    overflow: hidden; /* clip any images in this container to the size of the container*/
+}
+
+div#control-area {
+    margin: auto;
+    width: 80%;
+    min-width: 800px;
+}
+
+fieldset {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+legend {
+    color: CornflowerBlue;
+}
+
+div.slider {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+div#horizontal-control, div#size-control {
+    width: 25%;
+}
+
+/* Vertically-align horizontal sliders as well as all slider <label>s (all those <label>s whose "for" attribute ends with "-control") at the top */
+div#horizontal-control, div#size-control, label[for$="-control"] { /* See http://www.w3schools.com/css/css_attribute_selectors.asp */
+    vertical-align: top;
+}
+
+/*div.centre p { text-align: center; }*/
+
+img#background {
+    /* horizontally centre the background image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* size the image */
+    /* http://tutorials.jenkov.com/responsive-mobile-friendly-web-design/responsive-images.html */
+    max-height: 500px;
+    width: 100%;
+
+}
+
+/* All dolphin imgs will appear inside the div#container and will be positioned absolutely with respect to it */
+
+img.dolphin {
+    position: absolute;
+    /* mix-blend-mode: darken; https://css-tricks.com/almanac/properties/m/mix-blend-mode/ vs background-blend-mode:
+    https://css-tricks.com/basics-css-blend-modes/ and http://www.w3schools.com/cssref/pr_background-blend-mode.asp */
+}
+
+img#dolphin1 {
+    left: 1%;
+    top: 300px;
+    z-index: 1;
+}
+
+img#dolphin2 {
+    left: 70%;
+    top: 350px;
+    z-index: 3;
+}
+
+img#dolphin3 {
+    left: 34%;
+    top: 150px;
+    z-index: 5;
+}
+
+img#dolphin4 {
+    left: 60%;
+    top: 100px;
+    z-index: 7;
+}
+
+img#dolphin5 {
+    left: 10%;
+    top: 250px;
+    z-index: 8;
+}
+
+img#dolphin6 {
+    left: 50%;
+    top: 190px;
+    z-index: 2;
+}
+
+img#dolphin7 {
+    left: 85%;
+    top: 180px;
+    z-index: 6;
+}
+
+img#dolphin8 {
+    left: 10%;
+    top: 200px;
+    z-index: 4;
+}
