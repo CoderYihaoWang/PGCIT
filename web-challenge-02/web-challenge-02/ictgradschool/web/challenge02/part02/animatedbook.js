@@ -1,8 +1,8 @@
 window.addEventListener("load", function(){
-    const $ = document.getElementById.bind(document);
-    for (let i = 0; i <= 10; ++i) {
-        $("page" + i).onclick = (event) => {
-            event.target.style.animationName = "flippage";
+    document.querySelectorAll(".page").forEach(page => {
+        if (page.nextElementSibling) {
+            page.onclick = () => page.style.animationName = "flippage";
+            page.onanimationend = () => page.nextElementSibling.style.zIndex = "0";
         }
-    }
+    });
 });

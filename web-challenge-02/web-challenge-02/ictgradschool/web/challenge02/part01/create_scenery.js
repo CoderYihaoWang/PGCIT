@@ -11,19 +11,19 @@ window.addEventListener("load", function(){
 
     $("input[type=checkbox]").forEach(box => {
         box.checked = true;
-        box.onclick = () => {
-            const id = "#" + box.id.split("-")[1];
-            $(id)[0].hidden = !box.checked;
-        }
+        const id = "#" + box.id.split("-")[1];
+        box.onclick = () => $(id)[0].hidden = !box.checked;
     });
 
     $("input[type=range]").forEach(range => {
-        range.onclick = () => {
-            const x = $("#horizontal-control")[0].value + "%";
-            const y = $("#vertical-control")[0].value + "%";
-            const size = $("#size-control")[0].value / 100 + 1;
-            $(".dolphin").forEach(img => img.style.transform = `translate(${x}, ${y}) scale(${size})`);
+        const x =  $("#horizontal-control")[0]
+            , y = $("#vertical-control")[0]
+            , size = $("#size-control")[0];
+        range.onchange = () => {
+            $(".dolphin").forEach(img => {
+                img.style.transform = `translate(${x.value}%, ${y.value}%) scale(${size.value/100 + 1})`
+            });
         }
-    })
+    });
 
 });

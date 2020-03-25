@@ -99,7 +99,7 @@ img#page5 {
 }
 
 img#page6 {
-    z-index:         -6;
+    z-index:        -6;
 }
 
 img#page7 {
@@ -121,7 +121,7 @@ img#page10 {
 div#page11 {
     animation-name: none; /* Don't close the flap at the end */
     /*animation-delay: 60s;*/
-    z-index:        -11;
+    z-index:       -11;
 }
 
 @keyframes flippage {
