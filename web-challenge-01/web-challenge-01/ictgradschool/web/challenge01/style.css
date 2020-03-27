@@ -58,12 +58,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     background: #ea2e49;
     display: inline-block;
-    padding: .5em 1em
+    padding: 0.5em 1em
 }
 
 h2 {
     font-weight: 900;
-    font-size: 6em
+    font-size: 6em;
+    padding: 0.2em 0;
 }
 
 h3 {
@@ -114,11 +115,12 @@ div.requirements p:last-child, section.intro div.summary p:last-child {
 }
 
 html {
-    padding: 3.5rem;
+    padding: 5rem;
+    font-size: 1vw;
 }
 
 section.intro {
-    padding: 3rem;
+    padding: 4rem;
 }
 em, strong {
     font-style: normal;
@@ -144,8 +146,8 @@ section.intro div.preamble {
 }
 
 div.preamble {
-    margin-left: -6.5rem;
-    padding: 2rem 2rem 2rem 6.5rem;
+    margin-left: -9rem;
+    padding: 3rem 3rem 3rem 9rem;
 }
 
 aside.sidebar, footer {
@@ -158,11 +160,11 @@ aside.sidebar {
 }
 
 aside.sidebar {
-    padding: 2.5rem;
+    padding: 4.5rem;
 }
 
 div.main {
-    padding: 3rem;
+    padding: 4.5rem;
 }
 aside.sidebar ul {
     padding: .5em 0 2em
@@ -187,7 +189,7 @@ footer a {
 }
 
 #zen-supporting > div {
-    padding: 2.5rem;
+    padding: 4rem;
 }
 
 div.explanation {
@@ -211,7 +213,7 @@ h2 {
 }
 
 section.intro {
-    width: 68%;
+    width: 66%;
 }
 
 aside.sidebar {
@@ -251,13 +253,9 @@ div.requirements {
     width: 70%;
 }
 
-body {
-    font-size: 1vw;
-}
-
 .extra1 {
-    width: 29vw;
-    height: 50vw;
+    width: 29.5vw;
+    height: 52vw;
     position: absolute;
     top: 0;
     right: 0;
