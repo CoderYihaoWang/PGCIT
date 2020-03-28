@@ -27,6 +27,7 @@ function orders(store) {
             dough = new Ingredient("Square dough")
             cheese = new Ingredient("Feta cheese")
             veggies = [new Ingredient("Tomato"), new Ingredient("Potato")]
+            break
         // add more stores here 
 
     }
@@ -73,7 +74,7 @@ function orders(store) {
         console.log("-----------------------------")
         console.log(`${customer} ordered a ${store} Style ${type} Pizza`)
         console.log("\n")
-        
+
         return customer
     }
 }
