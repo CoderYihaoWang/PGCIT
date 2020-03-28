@@ -1,86 +1,80 @@
 (function pizzaOrderApp() {
     new Customer("Cameron").orders("Waikato")("Cheese")
+
     new Customer("Yu-Cheng").orders("Auckland")("Crazy")
+
     new Customer("Yihao").orders("Wellington")("Meat & Meat")
+                         .orders("Waikato")("Cheese")
+                         .orders("Auckland")("Meat & Meat")
 })()
 
 function orders(store) {
-    const that = this
-    const factory = {}
+    const customer = this
+    let dough, cheese, veggies
 
     switch (store) {
         case "Waikato":
-            factory.dough = new Ingredient("Thick crust dough")
-            factory.cheese = new Ingredient("Reggiano cheese")
-            factory.veggies = []
+            dough = new Ingredient("Thick crust dough")
+            cheese = new Ingredient("Reggiano cheese")
+            veggies = []
             break
         case "Auckland":
-            factory.dough = new Ingredient("Thin pan dough")
-            factory.cheese = new Ingredient("Mozzarella cheese")
-            factory.veggies = []
+            dough = new Ingredient("Thin pan dough")
+            cheese = new Ingredient("Mozzarella cheese")
+            veggies = []
             break
         case "Wellington":
-            factory.dough = new Ingredient("Square dough")
-            factory.cheese = new Ingredient("Feta cheese")
-            factory.veggies = [new Ingredient("Tomato"), new Ingredient("Potato")]
+            dough = new Ingredient("Square dough")
+            cheese = new Ingredient("Feta cheese")
+            veggies = [new Ingredient("Tomato"), new Ingredient("Potato")]
         // add more stores here 
 
     }
 
     return function(type) {
-        const pizza = {
-            bake: () => console.log("Bake for 25 minutes at 350"),
-            cut: () => console.log("Cutting the pizza into diagonal slices"),
-            box: () => console.log("Place pizza in official PizzaStore box")
-        }
+        bake = () => console.log("Bake for 25 minutes at 350"),
+        cut = () => console.log("Cutting the pizza into diagonal slices"),
+        box = () => console.log("Place pizza in official PizzaStore box")
 
         switch (type) {
             case "Cheese":
-                pizza.prepare = () => {
-                    console.log(`Preparing ${store} Style ${type} Pizza`)
-                    console.log(factory.dough.toString())
-                    console.log(factory.cheese.toString())
-                    for (const v of factory.veggies)
-                        console.log(v.toString())
-                    pizza.bake();
-                    pizza.cut();
-                    pizza.box();
-                }
+                console.log(`Preparing ${store} Style ${type} Pizza`)
+                console.log(dough.toString())
+                console.log(cheese.toString())
+                veggies.forEach(v => console.log(v.toString()))
+                bake();
+                cut();
+                box();
                 break
             case "Crazy": 
-                pizza.prepare = () => {
-                    console.log(`Preparing ${store} Style ${type} Pizza`)
-                    console.log(factory.dough.toString())
-                    console.log(factory.cheese.toString())
-                    for (const v of factory.veggies)
-                        console.log(v.toString())
-                    console.log("Super HOT pepper is added")
-                    pizza.bake();
-                    pizza.cut();
-                    pizza.box();
-                }
+                console.log(`Preparing ${store} Style ${type} Pizza`)
+                console.log(dough.toString())
+                console.log(cheese.toString())
+                veggies.forEach(v => console.log(v.toString()))
+                console.log("Super HOT pepper is added")
+                bake();
+                cut();
+                box();
                 break
             case "Meat & Meat":
-                pizza.prepare = () => {
-                    console.log(`Preparing ${store} Style ${type} Pizza`)
-                    console.log(factory.dough.toString())
-                    console.log(factory.cheese.toString())
-                    for (const v of factory.veggies)
-                        console.log(v.toString())
-                    console.log("So much meat is added")
-                    pizza.bake();
-                    pizza.cut();
-                    pizza.box();
-                }
+                console.log(`Preparing ${store} Style ${type} Pizza`)
+                console.log(dough.toString())
+                console.log(cheese.toString())
+                veggies.forEach(v => console.log(v.toString()))
+                console.log("So much meat is added")
+                bake();
+                cut();
+                box();
                 break
             // add more pizza types here
 
         }
 
-        pizza.prepare()
         console.log("-----------------------------")
-        console.log(`${that} ordered a ${store} Style ${type} Pizza`)
+        console.log(`${customer} ordered a ${store} Style ${type} Pizza`)
         console.log("\n")
+        
+        return customer
     }
 }
 
