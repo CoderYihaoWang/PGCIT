@@ -1,14 +1,18 @@
 (function pizzaOrderApp() {
-    new Customer("Cameron").orders("Waikato")("Cheese")
 
-    new Customer("Yu-Cheng").orders("Auckland")("Crazy")
+    new Customer("Cameron").from("Waikato").orders("Cheese")
 
-    new Customer("Yihao").orders("Wellington")("Meat & Meat")
-                         .orders("Waikato")("Cheese")
-                         .orders("Auckland")("Meat & Meat")
+    new Customer("Yu-Cheng").from("Auckland").orders("Crazy")
+
+    new Customer("Yihao").from("Wellington").orders("Meat & Meat")
+                         .from("Waikato").orders("Cheese")
+                         .from("Auckland").orders("Meat & Meat")
+    
+    // add more orders here
+
 })()
 
-function orders(store) {
+function from(store) {
     const customer = this
     let dough, cheese, veggies
 
@@ -32,55 +36,56 @@ function orders(store) {
 
     }
 
-    return function(type) {
-        bake = () => console.log("Bake for 25 minutes at 350"),
-        cut = () => console.log("Cutting the pizza into diagonal slices"),
-        box = () => console.log("Place pizza in official PizzaStore box")
+    return { orders: function(type) {
+                const bake = () => console.log("Bake for 25 minutes at 350")
+                    , cut = () => console.log("Cutting the pizza into diagonal slices")
+                    , box = () => console.log("Place pizza in official PizzaStore box")
 
-        switch (type) {
-            case "Cheese":
-                console.log(`Preparing ${store} Style ${type} Pizza`)
-                console.log(dough.toString())
-                console.log(cheese.toString())
-                veggies.forEach(v => console.log(v.toString()))
-                bake();
-                cut();
-                box();
-                break
-            case "Crazy": 
-                console.log(`Preparing ${store} Style ${type} Pizza`)
-                console.log(dough.toString())
-                console.log(cheese.toString())
-                veggies.forEach(v => console.log(v.toString()))
-                console.log("Super HOT pepper is added")
-                bake();
-                cut();
-                box();
-                break
-            case "Meat & Meat":
-                console.log(`Preparing ${store} Style ${type} Pizza`)
-                console.log(dough.toString())
-                console.log(cheese.toString())
-                veggies.forEach(v => console.log(v.toString()))
-                console.log("So much meat is added")
-                bake();
-                cut();
-                box();
-                break
-            // add more pizza types here
+                switch (type) {
+                    case "Cheese":
+                        console.log(`Preparing ${store} Style ${type} Pizza`)
+                        console.log(dough.toString())
+                        console.log(cheese.toString())
+                        veggies.forEach(v => console.log(v.toString()))
+                        bake();
+                        cut();
+                        box();
+                        break
+                    case "Crazy": 
+                        console.log(`Preparing ${store} Style ${type} Pizza`)
+                        console.log(dough.toString())
+                        console.log(cheese.toString())
+                        veggies.forEach(v => console.log(v.toString()))
+                        console.log("Super HOT pepper is added")
+                        bake();
+                        cut();
+                        box();
+                        break
+                    case "Meat & Meat":
+                        console.log(`Preparing ${store} Style ${type} Pizza`)
+                        console.log(dough.toString())
+                        console.log(cheese.toString())
+                        veggies.forEach(v => console.log(v.toString()))
+                        console.log("So much meat is added")
+                        bake();
+                        cut();
+                        box();
+                        break
+                    // add more pizza types here
 
-        }
+                }
 
-        console.log("-----------------------------")
-        console.log(`${customer} ordered a ${store} Style ${type} Pizza`)
-        console.log("\n")
+                console.log("-----------------------------")
+                console.log(`${customer} ordered a ${store} Style ${type} Pizza`)
+                console.log("\n")
 
-        return customer
+                return customer
+            }
     }
 }
 
 function Customer(name) {
-    this.orders = orders
+    this.from = from
     this.toString = () => name
 }
 
