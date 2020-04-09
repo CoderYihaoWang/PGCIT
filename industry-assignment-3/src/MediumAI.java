@@ -15,7 +15,12 @@ public class MediumAI implements AI {
 
     @Override
     public String guess(Record feedback) {
+        if (feedback == null) {
+            return Compute.generateRandomGuess();
+        }
+
         update(feedback);
+
         int rand = (int)(Math.random() * possibleGuesses.size());
         Iterator<Integer> it = possibleGuesses.iterator();
         Integer guessNum = it.next();

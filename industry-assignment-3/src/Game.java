@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -7,44 +6,47 @@ import java.util.Scanner;
 import ictgradschool.industry.Keyboard;
 
 public class Game {
+    private static final int MAX_TURNS = 7;
+    private static final String PATH = "./data/";
     private final AI ai;
-    private Queue<String> fileGuesses;
-    private final Queue<Record> history;
+    private final Queue<Record> history = new LinkedList<>();
+    private Queue<String> fileGuesses = new LinkedList<>();
     private String userSecret;
     private String aiSecret;
-    private boolean isUserTurn;
+    private int winner;
 
     public Game(AI ai) {
         this.ai = ai;
-        this.fileGuesses = new LinkedList<>();
-        this.history = new LinkedList<>();
-        isUserTurn = true;
     }
 
     public void run() {
+        tryLoadFile();
+        userSecret = getUserSecretCode();
+        aiSecret = Compute.generateRandomGuess();
+        winner = play(0, true);
+        showWinner();
+        trySaveFile();
+    }
+
+    private void tryLoadFile() {
+        String input = Console.getInput(
+                "Would you like to load guesses from a file?"
+                , new String[]{"y", "n"}
+                , new String[]{"yes, please load guesses from a file", "no, I will play this game manually"}
+        );
+        if (input.equals("n"))
+            return;
         loadFile();
     }
 
     private void loadFile() {
-        System.out.println("Would you like to load guesses from file?");
-        System.out.println("'Y' - Yes, please load guesses from file");
-        System.out.println("'N' - No, I will play this game manually");
-        String input = Keyboard.readInput().toLowerCase();
-        while (!input.equals("y") && !input.equals("n")) {
-            System.out.println("Invalid input, please try again");
-            input = Keyboard.readInput().toLowerCase();
-        }
-
-        if (input.equals("n"))
-            return;
-
         boolean loadSuccessful = false;
         while (!loadSuccessful) {
             System.out.println("Please input a file to read from, or 'q' to continue game manually");
-            input = Keyboard.readInput();
+            String input = Keyboard.readInput();
             if (input.toLowerCase().equals("q"))
                 return;
-            try (Scanner scanner = new Scanner(new File(input))) {
+            try (Scanner scanner = new Scanner(new File(PATH + input))) {
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
                     if (!Compute.validate(line)) {
@@ -59,5 +61,130 @@ public class Game {
                 System.out.println("The file does not exist, please try again");
             }
         }
+    }
+
+    private String getUserSecretCode() {
+        return getCode("Please enter a secret code: ");
+    }
+
+    private int play(int turn, boolean isUserTurn) {
+        if (turn == MAX_TURNS)
+            return 0;
+        if (isUserTurn) {
+            System.out.println("-----");
+            System.out.println("Turn " + (turn + 1));
+        }
+        String secret = isUserTurn ? aiSecret : userSecret;
+        String guess = isUserTurn ? getUserGuess() : getAiGuess();
+
+        Record record = new Record(secret, guess);
+        showResults(record);
+        System.out.println();
+
+        history.add(record);
+
+        if (record.bulls == Compute.LENGTH) {
+            return isUserTurn ? 1 : -1;
+        }
+
+        return isUserTurn ? play(turn, false) : play(turn + 1, true);
+    }
+
+    private String getUserGuess() {
+        String guess;
+        if (!fileGuesses.isEmpty()) {
+            guess = fileGuesses.poll();
+            System.out.println("You guess: " + guess);
+            return guess;
+        }
+
+        return getCode("You guess: ");
+    }
+
+    private String getAiGuess() {
+        String guess;
+        if (history.isEmpty())
+            guess = ai.guess(null);
+        else
+            guess = ai.guess(history.peek());
+        System.out.println("Computer guess: " + guess);
+        return guess;
+    }
+
+    private void showResults(Record record) {
+        System.out.println(
+                "Result: " + record.bulls + (record.bulls == 1 ? " bull " : " bulls ")
+                + "and " + record.cows + (record.cows == 1 ? " cow" : " cows")
+        );
+    }
+
+    private void showWinner() {
+        if (winner == 1) {
+            System.out.println("You win!");
+        } else if (winner == -1) {
+            System.out.println("Computer wins!");
+        } else {
+            System.out.println("Attempts are up, nobody wins...");
+        }
+    }
+
+    private void trySaveFile() {
+        String input = Console.getInput(
+                "Would you like to save the results to a file?"
+                , new String[]{"y", "n"}
+                , new String[]{"yes, please save them to a file", "no, just exit"}
+        );
+        if (input.equals("n"))
+            return;
+        saveFile();
+    }
+
+    private void saveFile() {
+        System.out.println("Please enter a file name");
+        String filename = Keyboard.readInput();
+
+        try {
+            File file = new File(PATH + filename);
+            file.createNewFile();
+            PrintWriter pw = new PrintWriter(file);
+            boolean isUserTurn = true;
+            int turn = 0;
+            pw.println("Bulls and Cows Game Result:");
+            pw.println("Your code: " + userSecret);
+            pw.println("Compute code: " + aiSecret);
+            for (Record record : history) {
+                if (isUserTurn) {
+                    pw.println("-----");
+                    pw.println("Turn " + ++turn + ":");
+                }
+                pw.print(isUserTurn ? "You guessed " : "Computer guessed ");
+                pw.println(String.format(
+                        "%s, scoring %d bulls and %d cows"
+                        , record.guess, record.bulls, record.cows
+                ));
+                isUserTurn = !isUserTurn;
+            }
+            if (winner == 1) {
+                pw.println("You won");
+            } else if (winner == -1) {
+                pw.println("Computer won");
+            } else {
+                pw.println("The game ended in a draw");
+            }
+            pw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getCode(String prompt) {
+        System.out.print(prompt);
+        String code = Keyboard.readInput();
+        while (!Compute.validate(code)) {
+            System.out.println("Sorry, invalid code, please try again");
+            code = Keyboard.readInput();
+        }
+        return code;
     }
 }

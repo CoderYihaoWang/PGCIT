@@ -1,0 +1,32 @@
+Bulls and Cows Game Result:
+Your code: 1234
+Compute code: 6328
+-----
+Turn 1:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 2561, scoring 0 bulls and 2 cows
+-----
+Turn 2:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 9417, scoring 0 bulls and 2 cows
+-----
+Turn 3:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 4026, scoring 0 bulls and 2 cows
+-----
+Turn 4:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 5362, scoring 0 bulls and 2 cows
+-----
+Turn 5:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 6812, scoring 0 bulls and 2 cows
+-----
+Turn 6:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 8543, scoring 0 bulls and 2 cows
+-----
+Turn 7:
+You guessed 1234, scoring 0 bulls and 2 cows
+Computer guessed 2851, scoring 0 bulls and 2 cows
+The game ended in a draw
