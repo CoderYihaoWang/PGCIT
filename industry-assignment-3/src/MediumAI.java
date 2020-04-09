@@ -2,14 +2,13 @@ import java.util.*;
 
 public class MediumAI implements AI {
 
-    protected final Set<Integer> possibleGuesses;
+    protected final Set<String> possibleGuesses = new HashSet<>();
 
     public MediumAI() {
-        possibleGuesses = new HashSet<>();
-
         for (int i = 0; i <= Compute.MAX_GUESS; ++i) {
-            if (Compute.validate(i + ""))
-                possibleGuesses.add(i);
+            String guess = Compute.integerCodeToString(i);
+            if (Compute.validate(guess))
+                possibleGuesses.add(guess);
         }
     }
 
@@ -22,16 +21,16 @@ public class MediumAI implements AI {
         update(feedback);
 
         int rand = (int)(Math.random() * possibleGuesses.size());
-        Iterator<Integer> it = possibleGuesses.iterator();
-        Integer guessNum = it.next();
+        Iterator<String> it = possibleGuesses.iterator();
+        String guess = it.next();
         while (--rand >= 0) {
-            guessNum = it.next();
+            guess = it.next();
         }
 
-        return guessNum.toString();
+        return guess;
     }
 
     protected void update(Record feedback) {
-        possibleGuesses.remove(Integer.parseInt(feedback.guess));
+        possibleGuesses.remove(feedback.guess);
     }
 }

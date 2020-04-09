@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 import ictgradschool.industry.Keyboard;
 
@@ -14,6 +12,7 @@ public class Game {
     private String userSecret;
     private String aiSecret;
     private int winner;
+    private Record computerLastGuess;
 
     public Game(AI ai) {
         this.ai = ai;
@@ -82,6 +81,8 @@ public class Game {
         System.out.println();
 
         history.add(record);
+        if (!isUserTurn)
+            computerLastGuess = record;
 
         if (record.bulls == Compute.LENGTH) {
             return isUserTurn ? 1 : -1;
@@ -103,10 +104,10 @@ public class Game {
 
     private String getAiGuess() {
         String guess;
-        if (history.isEmpty())
+        if (history.size() < 2)
             guess = ai.guess(null);
         else
-            guess = ai.guess(history.peek());
+            guess = ai.guess(computerLastGuess);
         System.out.println("Computer guess: " + guess);
         return guess;
     }

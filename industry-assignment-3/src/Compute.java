@@ -47,4 +47,8 @@ public class Compute {
         }
         return new String(arr, 0, LENGTH);
     }
+
+    public static String integerCodeToString(int code) {
+        return String.format("%" + LENGTH + "s", "" + code).replace(' ', '0');
+    }
 }
