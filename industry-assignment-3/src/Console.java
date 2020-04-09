@@ -34,6 +34,7 @@ public class Console {
                 && description != null
                 && choice.length == description.length;
 
+        System.out.println();
         System.out.println(question);
         for (int i = 0; i < choice.length; ++i) {
             System.out.print(choice[i] + " - ");

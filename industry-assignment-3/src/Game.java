@@ -36,7 +36,7 @@ public class Game {
 
     // an enum representing the winner
     private Winner winner;
-    private enum Winner {USER, AI, DRAW}
+    private enum Winner { USER, AI, DRAW }
 
     // the computer's last guess, used to provide feedback to AI
     private Record aiLastGuess;
@@ -103,29 +103,31 @@ public class Game {
         }
     }
 
+    // the main game logic
     private Winner play(int turn, boolean isUserTurn) {
+        // if no attempts left, return a draw
         if (turn == MAX_TURNS)
             return Winner.DRAW;
 
         if (isUserTurn) {
             System.out.println("-----");
-            System.out.println("Turn " + (turn + 1));
+            System.out.println("Turn " + (turn + 1) + ":");
         }
+
         String secret = isUserTurn ? aiCode : userCode;
         String guess = isUserTurn ? getUserGuess() : getAiGuess();
 
         Record record = new Record(secret, guess);
         showResults(record);
-        System.out.println();
-
         history.add(record);
         if (!isUserTurn)
             aiLastGuess = record;
 
-        if (record.bulls == Compute.LENGTH) {
+        // if all digits are bulls, then there is a winner
+        if (record.bulls == Compute.LENGTH)
             return isUserTurn ? Winner.USER : Winner.AI;
-        }
 
+        // if no winner, then recurse
         return isUserTurn ? play(turn, false) : play(turn + 1, true);
     }
 
@@ -160,6 +162,7 @@ public class Game {
                 "Result: " + record.bulls + (record.bulls == 1 ? " bull " : " bulls ")
                 + "and " + record.cows + (record.cows == 1 ? " cow" : " cows")
         );
+        System.out.println();
     }
 
     // display the winner information
@@ -236,6 +239,7 @@ public class Game {
     // get a guess or secret code from console
     // ask the user to input again until the input is a valid code
     private String getCode(String prompt) {
+        System.out.println();
         System.out.print(prompt);
         String code = Keyboard.readInput();
         while (!Compute.validate(code)) {
