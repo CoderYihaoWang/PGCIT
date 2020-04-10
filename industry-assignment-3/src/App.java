@@ -6,11 +6,11 @@
  * Dependency:    Game, EasyAI, MediumAI, HardAI, Console
  *
  * Author:        Yihao Wang
- * Last modified: 9/4/2020
+ * Last modified: 10/4/2020
  */
 public class App {
 
-    private static final String LAST_COMPILED_DATE = "9/4/2020";
+    private static final String LAST_COMPILED_DATE = "10/4/2020";
 
     // start point
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class App {
 
     // instantiate different AI according to user's input, and inject it to a Game instance
     private static Game createGame() {
-        String difficulty = Console.getInput(
+        String difficulty = Console.ask(
                 "Please input a difficulty level:"
                 , new String[]{"e", "m", "h"}
                 , new String[]{"easy", "medium", "hard"}

@@ -5,7 +5,7 @@
  * Dependency:
  *
  * Author:        Yihao Wang
- * Last modified: 9/4/2020
+ * Last modified: 10/4/2020
  */
 public class Compute {
     // length of a secret code
@@ -14,11 +14,16 @@ public class Compute {
     // max integer value of a valid guess
     public static final int MAX_GUESS = (int)Math.pow(10, LENGTH) - 1;
 
+    // the char array to generate random guesses from
+    // stored in a static variable to avoid reconstructing every time
+    private static final char[] DIGITS = "0123456789".toCharArray();
+
     // this class should not be instantiated
     private Compute() {}
 
     /**
      * computes the bulls from a secret code and a guess
+     * this method assumes that the inputs are both valid guess code
      * @param secret the secret code
      * @param guess the guess
      * @return the numeber of bulls
@@ -34,9 +39,10 @@ public class Compute {
 
     /**
      * computes the number of cows from a secret code and a guess
+     * this method assumes that the inputs are both valid guess code
      * @param secret the secret code
      * @param guess the guess
-     * @return the numeber of cows
+     * @return the number of cows
      */
     public static int cows(String secret, String guess) {
         int cows = 0;
@@ -55,7 +61,7 @@ public class Compute {
      * @param guess the String to be tested
      * @return true if the argument is a valid guess, else false
      */
-    public static boolean validate(String guess) {
+    public static boolean isValid(String guess) {
         if (guess.length() != LENGTH)
             return false;
         boolean[] exist = new boolean[10];
@@ -72,22 +78,27 @@ public class Compute {
      * uses an algorithm whose performance does not depend on probability
      * @return a random valid guess
      */
-    public static String generateRandomGuess() {
-        // randomly shuffle the char array, and return the first 4 digits
-        // it is guaranteed that 10 random numbers will be generated and the
+    public static String randomGuess() {
+        // randomly shuffle the 0-9 char array, and return the first 4 digits
+        // it is guaranteed that 4 random numbers will be generated and the
         // result is a valid code
-        char[] arr = "0123456789".toCharArray();
-        for (int i = 0; i < arr.length; ++i) {
-            int rand = (int)(Math.random() * (arr.length - i)) + i;
-            char temp = arr[i];
-            arr[i] = arr[rand];
-            arr[rand] = temp;
+        shuffle();
+        return new String(DIGITS, 0, LENGTH);
+    }
+
+    // shuffle the first LENGTH digits in the DIGITS array
+    private static void shuffle() {
+        for (int i = 0; i < LENGTH; ++i) {
+            int rand = (int)(Math.random() * (DIGITS.length - i)) + i;
+            char temp = DIGITS[i];
+            DIGITS[i] = DIGITS[rand];
+            DIGITS[rand] = temp;
         }
-        return new String(arr, 0, LENGTH);
     }
 
     /**
      * convert a guess code represented by an int to a String
+     * this method assumes the input is a valid guess code
      * @param code code in int
      * @return code in String
      */

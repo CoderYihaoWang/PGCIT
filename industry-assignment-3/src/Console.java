@@ -27,7 +27,7 @@ public class Console {
      * @param description the array of all descriptions relating to the inputs
      * @return a valid choice
      */
-    public static String getInput(String question, String[] choice, String[] description) {
+    public static String ask(String question, String[] choice, String[] description) {
         // the following should hold, unless there are bugs in the program
         assert question != null
                 && choice != null

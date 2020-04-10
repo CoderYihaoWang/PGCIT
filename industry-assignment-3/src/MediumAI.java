@@ -16,7 +16,7 @@ public class MediumAI implements AI {
         // initialise the possibleGuesses set, put all valid codes in
         for (int i = 0; i <= Compute.MAX_GUESS; ++i) {
             String guess = Compute.intCodeToString(i);
-            if (Compute.validate(guess))
+            if (Compute.isValid(guess))
                 possibleGuesses.add(guess);
         }
     }
@@ -37,7 +37,7 @@ public class MediumAI implements AI {
 
         // the feedback is null if it is the first guess, so just give a random guess
         if (feedback == null)
-            return Compute.generateRandomGuess();
+            return Compute.randomGuess();
 
         // update the possibleGuesses set based on the feedback
         update(feedback);

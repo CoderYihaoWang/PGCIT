@@ -10,7 +10,7 @@ import ictgradschool.industry.Keyboard;
  * Dependency:    AI, Console, Compute, Record, Keyboard
  *
  * Author:        Yihao Wang
- * Last modified: 9/4/2020
+ * Last modified: 10/4/2020
  */
 public class Game {
     // the max number of attempts
@@ -53,7 +53,7 @@ public class Game {
         tryLoadFile();
 
         userCode = getUserCode();
-        aiCode = Compute.generateRandomGuess();
+        aiCode = Compute.randomGuess();
 
         winner = play(0, true);
 
@@ -65,14 +65,13 @@ public class Game {
     // asks the user whether to load guesses from a file
     // if so, then load
     private void tryLoadFile() {
-        String input = Console.getInput(
+        String input = Console.ask(
                 "Would you like to load guesses from a file?"
                 , new String[]{"y", "n"}
                 , new String[]{"yes, please load guesses from a file", "no, I will play this game manually"}
         );
-        if (input.equals("n"))
-            return;
-        loadFile();
+        if (input.equals("y"))
+            loadFile();
     }
 
     // get the file name, and load guesses from the file
@@ -80,19 +79,21 @@ public class Game {
     // or the file is in invalid format
     private void loadFile() {
         boolean loadSuccessful = false;
+        OUTER:
         while (!loadSuccessful) {
+            System.out.println();
             System.out.println("Please input a file to read from, or 'q' to continue game manually");
-            System.out.println("only the file name with no paths, the file should be put under the \"./data\" directory");
+            System.out.println("(only the file name with no paths, the file should have been put under the \"./data\" directory）");
             String input = Keyboard.readInput();
             if (input.toLowerCase().equals("q"))
                 return;
             try (Scanner scanner = new Scanner(new File(PATH + input))) {
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    if (!Compute.validate(line)) {
+                    if (!Compute.isValid(line)) {
                         System.out.println("The file is not in recognized format, please use another file");
                         fileGuesses.clear();
-                        continue;
+                        continue OUTER;
                     }
                     fileGuesses.add(line);
                 }
@@ -104,6 +105,9 @@ public class Game {
     }
 
     // the main game logic
+    // turn: the current turn
+    // isUserTurn: true if it is the user's turn, false if it is the ai's turn
+    // returns an enum standing for the winner
     private Winner play(int turn, boolean isUserTurn) {
         // if no attempts left, return a draw
         if (turn == MAX_TURNS)
@@ -183,7 +187,7 @@ public class Game {
 
     // asks the user whether to save the game to file, if so, save it
     private void trySaveFile() {
-        String input = Console.getInput(
+        String input = Console.ask(
                 "Would you like to save the results to a file?"
                 , new String[]{"y", "n"}
                 , new String[]{"yes, please save them to a file", "no, just exit"}
@@ -242,7 +246,7 @@ public class Game {
         System.out.println();
         System.out.print(prompt);
         String code = Keyboard.readInput();
-        while (!Compute.validate(code)) {
+        while (!Compute.isValid(code)) {
             System.out.println("Sorry, invalid code, please try again");
             code = Keyboard.readInput();
         }
