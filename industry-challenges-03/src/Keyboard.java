@@ -1,4 +1,5 @@
-package ictgradschool.industry;/*
+/*
+
  * CompSci 101 - Keyboard Class
  * ============================
  * Version 4th March, 2011
@@ -14,6 +15,7 @@ package ictgradschool.industry;/*
  * This will assign the line of text entered at the keyboard (as a String) to the input variable.
  *
  */
+
 import java.util.*;
 import java.io.*;
 

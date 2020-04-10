@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event listener test</title>
+        <meta charset="utf8">
+<script>
+    const showMessage = m => () => alert(m)
+    /* 0 */ onload = showMessage(0)
+    /* 1 */ addEventListener("load", showMessage(1))
+    /* 2 */ onload = showMessage(2)
+    /* 3 */ addEventListener("load", showMessage(3))
+    /* 4 */ onload = showMessage(4)
+</script>
+    </head>
+    <body></body>
+</html>
