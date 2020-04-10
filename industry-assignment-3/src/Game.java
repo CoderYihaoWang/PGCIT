@@ -1,13 +1,16 @@
-import java.io.*;
-import java.util.*;
-
-import ictgradschool.industry.Keyboard;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 /**
  * Name:          Game
  * Description:   Represent a Bulls and Cows Game
  *                it controls the logic of the game
- * Dependency:    AI, Console, Compute, Record, Keyboard
+ * Dependency:    AI, Console, Compute, Record
  *
  * Author:        Yihao Wang
  * Last modified: 10/4/2020
@@ -82,9 +85,10 @@ public class Game {
         OUTER:
         while (!loadSuccessful) {
             System.out.println();
-            System.out.println("Please input a file to read from, or 'q' to continue game manually");
-            System.out.println("(only the file name with no paths, the file should have been put under the \"./data\" directory）");
-            String input = Keyboard.readInput();
+            String input = Console.ask(
+                    "Please input a file to read from, or 'q' to continue game manually"
+                    + "\n(only the file name with no paths, the file should have been put under the \"./data\" directory\n"
+            );
             if (input.toLowerCase().equals("q"))
                 return;
             try (Scanner scanner = new Scanner(new File(PATH + input))) {
@@ -192,16 +196,16 @@ public class Game {
                 , new String[]{"y", "n"}
                 , new String[]{"yes, please save them to a file", "no, just exit"}
         );
-        if (input.equals("n"))
-            return;
-        saveFile();
+        if (input.equals("y"))
+            saveFile();
     }
 
     // asks the user for a file name, and save the history to it
     private void saveFile() {
-        System.out.println("Please enter a file name");
-        System.out.println("(Only the file name with no paths, the file will be saved to the \"./data\" folder)");
-        String filename = Keyboard.readInput();
+        String filename = Console.ask(
+                "Please enter a file name"
+                + "\n(Only the file name with no paths, the file will be saved to the \"./data\" folder)\n"
+        );
         try {
             File file = new File(PATH + filename);
             file.createNewFile();
@@ -214,7 +218,7 @@ public class Game {
             for (Record record : history) {
                 if (isUserTurn) {
                     pw.println("-----");
-                    pw.println("Turn " + ++turn + ":");
+                    pw.println("Turn " + (++turn) + ":");
                 }
                 pw.print(isUserTurn ? "You guessed " : "Computer guessed ");
                 pw.println(String.format(
@@ -242,14 +246,12 @@ public class Game {
 
     // get a guess or secret code from console
     // ask the user to input again until the input is a valid code
-    private String getCode(String prompt) {
+    private String getCode(String question) {
         System.out.println();
-        System.out.print(prompt);
-        String code = Keyboard.readInput();
-        while (!Compute.isValid(code)) {
-            System.out.println("Sorry, invalid code, please try again");
-            code = Keyboard.readInput();
-        }
+        System.out.print(question);
+        String code = Console.ask(question);
+        while (!Compute.isValid(code))
+            code = Console.ask("Sorry, invalid code, please try again\n");
         return code;
     }
 }

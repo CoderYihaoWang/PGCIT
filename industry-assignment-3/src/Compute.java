@@ -58,6 +58,7 @@ public class Compute {
 
     /**
      * test whether a String is a valid guess
+     * this method assumes the input is not null
      * @param guess the String to be tested
      * @return true if the argument is a valid guess, else false
      */
@@ -79,21 +80,16 @@ public class Compute {
      * @return a random valid guess
      */
     public static String randomGuess() {
-        // randomly shuffle the 0-9 char array, and return the first 4 digits
+        // randomly shuffle the first 4 digits 0-9 char array, and return the first 4 digits
         // it is guaranteed that 4 random numbers will be generated and the
         // result is a valid code
-        shuffle();
-        return new String(DIGITS, 0, LENGTH);
-    }
-
-    // shuffle the first LENGTH digits in the DIGITS array
-    private static void shuffle() {
         for (int i = 0; i < LENGTH; ++i) {
-            int rand = (int)(Math.random() * (DIGITS.length - i)) + i;
+            int rand = (int) (Math.random() * (DIGITS.length - i)) + i;
             char temp = DIGITS[i];
             DIGITS[i] = DIGITS[rand];
             DIGITS[rand] = temp;
         }
+        return new String(DIGITS, 0, LENGTH);
     }
 
     /**
