@@ -1,0 +1,43 @@
+Back on the first day against now, I have successfully implemented a functioning game.
+I learned to consider the design based on umls.
+I also learned and practiced the principle of dependency inversion.
+
+
+This design is good in that it extracts the interface AI to achieve dependency inversion.
+The Game instance needs three different strategies to perform the game. Instead of making
+the Game instance depending on all three AI classes, I made it dependent only on the 
+interface AI, and all three concrete classes of AI also depend on this interface. In this
+way, the dependency is inversed. The job of switching between 3 difficulty levels is put
+into the App class. If, in the future, the number of different game types increases, this 
+job of injecting dependency can be extracted to a specialised class. But at the moment,
+I think it is fine to give this job to the App class.
+
+This design also abstracted many repeated tasks into static methods. For example, the pattern 
+of asking the user a question, giving he/she choices, and repeatedly getting user input until
+there is a valid one, occurs many times in the program. So I made it a static method, and put
+it in the Console class. Another utility class is Compute, it contains the methods to 
+calculate bulls and cows, to validate a guess, and so on. In this way, code reuse is achieved.
+Because the basic algorithm logic of the MediumAI and HardAI are similar, I made HardAI
+extend MediumAI, and only overrode the method update(), this is also a way to reuse code.
+
+This design considered data hiding. All fields and methods are made private as long as it is 
+possible. This design also considered performance, for example, fields and methods that does
+not depend on specific instances were made static, so that they are not carried by specific
+instances, and this lowers the burden of dynamic dispatching. Also, the algorithms to generate
+random guesses are such that the performance is definite, instead of depending on probability.
+
+
+The final implementation is different from the initial one mainly in the following aspects:
+
+1. the original class GameData, is split into two classes: Compute and Record. The reason is 
+that I realised this GameData class is taking two distinct responsibilities, one is as a 3-tuple
+to contain a guess and its bulls and cows, and as such provides a way to return multiple values
+from a method; the other is to provide static methods relating to the computations in the 
+game. It will be clearer to split those two responsibilities into two classes.
+
+2. A new class Console is created to replace all the previous usages of Keyboard.
+This is because Keyboard only provides most basic functionalities of console input, the new class
+provides more sophisticated and convenient console io methods needed in this app.
+
+3. HardAI now extends MediumAI, instead of directly implements AI interface. This is for code
+reuse.

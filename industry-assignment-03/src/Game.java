@@ -87,7 +87,8 @@ public class Game {
             System.out.println();
             String input = Console.ask(
                     "Please input a file to read from, or 'q' to continue game manually"
-                    + "\n(only the file name with no paths, the file should have been put under the \"./data\" directory\n"
+                    + "\n(only the file name with no paths, the file should have been put under the \""
+                    + PATH + "\" directory\n"
             );
             if (input.toLowerCase().equals("q"))
                 return;
@@ -204,7 +205,8 @@ public class Game {
     private void saveFile() {
         String filename = Console.ask(
                 "Please enter a file name"
-                + "\n(Only the file name with no paths, the file will be saved to the \"./data\" folder)\n"
+                + "\n(Only the file name with no paths, the file will be saved to the \""
+                + PATH +"\" folder)\n"
         );
         try {
             File file = new File(PATH + filename);
