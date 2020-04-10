@@ -1,32 +1,28 @@
 Bulls and Cows Game Result:
-Your code: 1234
-Compute code: 1203
+Your code: 2345
+Compute code: 6917
 -----
 Turn 1:
-You guessed 1234, scoring 2 bulls and 1 cows
-Computer guessed 6974, scoring 1 bulls and 0 cows
+You guessed 1234, scoring 0 bulls and 1 cows
+Computer guessed 5214, scoring 0 bulls and 3 cows
 -----
 Turn 2:
-You guessed 1243, scoring 3 bulls and 0 cows
-Computer guessed 0254, scoring 2 bulls and 0 cows
+You guessed 2345, scoring 0 bulls and 0 cows
+Computer guessed 4621, scoring 0 bulls and 2 cows
 -----
 Turn 3:
-You guessed 1245, scoring 2 bulls and 0 cows
-Computer guessed 2670, scoring 0 bulls and 1 cows
+You guessed 3456, scoring 0 bulls and 1 cows
+Computer guessed 2150, scoring 1 bulls and 1 cows
 -----
 Turn 4:
-You guessed 1263, scoring 3 bulls and 0 cows
-Computer guessed 6391, scoring 0 bulls and 2 cows
+You guessed 4567, scoring 1 bulls and 1 cows
+Computer guessed 2485, scoring 2 bulls and 1 cows
 -----
 Turn 5:
-You guessed 1273, scoring 3 bulls and 0 cows
-Computer guessed 6371, scoring 0 bulls and 2 cows
+You guessed 1234, scoring 0 bulls and 1 cows
+Computer guessed 2945, scoring 3 bulls and 0 cows
 -----
 Turn 6:
-You guessed 1283, scoring 3 bulls and 0 cows
-Computer guessed 0638, scoring 1 bulls and 0 cows
------
-Turn 7:
-You guessed 1293, scoring 3 bulls and 0 cows
-Computer guessed 4602, scoring 0 bulls and 2 cows
-The game ended in a draw
+You guessed 1234, scoring 0 bulls and 1 cows
+Computer guessed 2345, scoring 4 bulls and 0 cows
+Computer won
