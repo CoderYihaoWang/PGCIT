@@ -1,6 +1,6 @@
-/*
+package util;/*
 
- * CompSci 101 - Keyboard Class
+ * CompSci 101 - Util.Keyboard Class
  * ============================
  * Version 4th March, 2011
  *
@@ -10,7 +10,7 @@
  *
  * Example usage:
  *
- * String input = Keyboard.readInput();
+ * String input = Util.Keyboard.readInput();
  *
  * This will assign the line of text entered at the keyboard (as a String) to the input variable.
  *
@@ -31,7 +31,7 @@ public class Keyboard {
                 redirected = System.in.available() != 0;
             }
         } catch (IOException e) {
-            System.err.println("An error has occurred in the Keyboard constructor.");
+            System.err.println("An error has occurred in the Util.Keyboard constructor.");
             e.printStackTrace();
             System.exit(-1);
         }
@@ -45,7 +45,7 @@ public class Keyboard {
         } catch (NoSuchElementException e) {
             return null; // End of file
         } catch (IllegalStateException e) {
-            System.err.println("An error has occurred in the Keyboard.readInput() method.");
+            System.err.println("An error has occurred in the Util.Keyboard.readInput() method.");
             e.printStackTrace();
             System.exit(-1);
         }
