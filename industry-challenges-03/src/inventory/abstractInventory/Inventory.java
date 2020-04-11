@@ -67,7 +67,6 @@ public abstract class Inventory {
     }
 
     protected static String getField(Scanner scanner, String regex) throws IOException {
-        scanner.useDelimiter(",|[\\r\\n]+");
         if (!scanner.hasNext())
             throw new EOFException("Reached end of file while attempting to read a field from file");
         String field = scanner.next();

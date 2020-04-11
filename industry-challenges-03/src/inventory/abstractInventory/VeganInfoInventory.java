@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class VeganInfoInventory extends NonCleaningInventory {
-    private static final String rVeganInfo = "true|false";
+    private static final String rVeganInfo = "^(true|false)$";
 
     protected boolean veganInfo;
 
@@ -29,7 +29,7 @@ public abstract class VeganInfoInventory extends NonCleaningInventory {
 
     @Override
     public void build(Scanner scanner) throws IOException {
-        super.build();
+        super.build(scanner);
         setVeganInfo(Inventory.getField(scanner, rVeganInfo));
     }
 }

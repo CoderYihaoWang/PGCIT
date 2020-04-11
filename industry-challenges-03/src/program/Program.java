@@ -26,7 +26,6 @@ public class Program {
         LocalStore store = new LocalStore();
         Status status = Status.INIT;
         System.out.println("Welcome the inventory management system");
-        System.out.println();
         while (status != Status.QUIT) {
             switch (status) {
                 case INIT:
@@ -55,9 +54,11 @@ public class Program {
     }
 
     private static Status init(LocalStore store) {
+        System.out.println();
         System.out.println("Please enter a store name:");
         store.setName(Keyboard.readInput());
 
+        System.out.println();
         System.out.println("Please enter the store location:");
         store.setLocation(Keyboard.readInput());
 
@@ -65,6 +66,8 @@ public class Program {
     }
 
     private static Status setCapacity(LocalStore store) {
+        System.out.println();
+        System.out.println("Welcome to " + store.getName() + " at " + store.getLocation());
         System.out.println("Please enter the capacity");
         try {
             store.setCapacity(Integer.parseInt(Keyboard.readInput()));
@@ -111,14 +114,16 @@ public class Program {
                 return Status.LOAD_INVENTORY;
             case "7":
                 return Status.QUERY_INVENTORY;
-            case "Q":
+            case "q":
                 return Status.QUIT;
             default:
                 System.out.println("Invalid input, please try again");
                 return Status.ADD_INVENTORY;
         }
         inventory.build();
-        if (!store.add(inventory))
+        if (store.add(inventory))
+            System.out.println("1 item has been successfully added");
+        else
             System.out.println("The max capacity has been reached, unable to add!");
         return Status.ADD_INVENTORY;
     }
@@ -130,7 +135,7 @@ public class Program {
         if (filename.equals("b"))
             return Status.ADD_INVENTORY;
         try (Scanner scanner = new Scanner(new File(filename))) {
-            scanner.useDelimiter(".|[\\r\\n]+");
+            scanner.useDelimiter(",|[\\r\\n]+");
             while (scanner.hasNext()) {
                 String category = scanner.next();
                 Inventory inventory;
@@ -161,7 +166,9 @@ public class Program {
                     System.out.println(e.getMessage());
                     return Status.ADD_INVENTORY;
                 }
-                if (!store.add(inventory)) {
+                if (store.add(inventory)) {
+                    System.out.println("1 " + category + " item has been successfully added");
+                } else {
                     System.out.println("The max capacity has been reached, unable to add!");
                     break;
                 }
@@ -225,8 +232,10 @@ public class Program {
                 break;
             case "6":
                 return Status.QUERY_INVENTORY;
+            default:
+                System.out.println("Invalid input, please try again");
+                return Status.QUERY_CATEGORY;
         }
-        System.out.println("Invalid input, please try again");
-        return Status.QUERY_CATEGORY;
+        return Status.QUERY_INVENTORY;
     }
 }

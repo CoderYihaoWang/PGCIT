@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public abstract class NonCleaningInventory extends Inventory {
-    private static final String rExpiryDate = "\\d{4}-\\d{2}-\\d{2}";
-    private static final String rWeight = "\\d*(\\.\\d*)?";
+    private static final String rExpiryDate = "^\\d{4}-\\d{1,2}-\\d{1,2}$";
+    private static final String rWeight = "^\\d*(\\.\\d*)?$";
 
     protected String expiryDate;
     protected BigDecimal weight;
@@ -35,13 +35,13 @@ public abstract class NonCleaningInventory extends Inventory {
     @Override
     public void build() {
         super.build();
-        setExpiryDate(Inventory.getField("expiry date", rExpiryDate));
-        setWeight(Inventory.getField("weight", rWeight));
+        setExpiryDate(Inventory.getField("expiry date (yyyy-mm-dd)", rExpiryDate));
+        setWeight(Inventory.getField("weight in kg", rWeight));
     }
 
     @Override
     public void build(Scanner scanner) throws IOException {
-        super.build();
+        super.build(scanner);
         setExpiryDate(Inventory.getField(scanner, rExpiryDate));
         setWeight(Inventory.getField(scanner, rWeight));
     }

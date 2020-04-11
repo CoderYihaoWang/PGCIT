@@ -58,44 +58,45 @@ public class LocalStore {
                 ++numOfResults;
         }
         String[] tableHead = new String[]{"No.", "Category", "Name", "Base Price", "Quantity", "Note"};
-        String[][] table = new String[numOfResults][tableHead.length];
+        String[][] table = new String[numOfResults + 1][tableHead.length];
         table[0] = tableHead;
         int row = 1;
-        for (int i = 1; i < numOfInventory; ++i) {
-            if (inventories[i].getCategory().equals(category)) {
+        for (int i = 1; i < numOfInventory + 1; ++i) {
+            if (inventories[i - 1].getCategory().equals(category)) {
                 table[row] = new String[]{
                         row + "",
-                        inventories[i].getCategory(),
-                        inventories[i].getName(),
-                        inventories[i].getBasePrice(),
-                        inventories[i].getQuantityInStock(),
-                        inventories[i].getAdditionalInfo()
+                        inventories[i - 1].getCategory(),
+                        inventories[i - 1].getName(),
+                        inventories[i - 1].getBasePrice(),
+                        inventories[i - 1].getQuantityInStock(),
+                        inventories[i - 1].getAdditionalInfo()
                 };
+                ++row;
             }
         }
-        System.out.println("Showing the result for category " + category);
-        System.out.println(numOfResults + "/" + numOfInventory + " results found");
         System.out.println();
+        System.out.println("Showing the results for category " + category);
+        System.out.println(numOfResults + "/" + numOfInventory + " results found");
         printTable(table);
     }
 
     public void printAll() {
         String[] tableHead = new String[]{"No.", "Category", "Name", "Base Price", "Quantity", "Note"};
-        String[][] table = new String[numOfInventory][tableHead.length];
+        String[][] table = new String[numOfInventory + 1][tableHead.length];
         table[0] = tableHead;
-        for (int i = 1; i < numOfInventory; ++i) {
+        for (int i = 1; i < numOfInventory + 1; ++i) {
             table[i] = new String[]{
                     i + "",
-                    inventories[i].getCategory(),
-                    inventories[i].getName(),
-                    inventories[i].getBasePrice(),
-                    inventories[i].getQuantityInStock(),
-                    inventories[i].getAdditionalInfo()
+                    inventories[i - 1].getCategory(),
+                    inventories[i - 1].getName(),
+                    inventories[i - 1].getBasePrice(),
+                    inventories[i - 1].getQuantityInStock(),
+                    inventories[i - 1].getAdditionalInfo()
             };
         }
-        System.out.println("Showing the result for all inventory categories");
-        System.out.println(numOfInventory + " results found");
         System.out.println();
+        System.out.println("Showing the results for all inventory categories");
+        System.out.println(numOfInventory + " results found");
         printTable(table);
     }
 
@@ -109,20 +110,32 @@ public class LocalStore {
                     widthOfCols[c] = tableRow[c].length() + 2;
             }
         }
-        int totalWidth = 0;
-        for (int width : widthOfCols)
-            totalWidth += width;
-        totalWidth += col + 1;
-        System.out.println("+" + "-".repeat(totalWidth - 2) + "+");
+
+        printHorizontal(widthOfCols);
+
         System.out.print("|");
         for (int c = 0; c < col; ++c)
-            System.out.println(String.format(" %-" + (widthOfCols[c] - 2) + "s |", table[0][c]));
-        System.out.println("+" + "-".repeat(totalWidth - 2) + "+");
+            System.out.print(String.format(" %-" + (widthOfCols[c] - 2) + "s |", table[0][c]));
+        System.out.println();
+
+        printHorizontal(widthOfCols);
+
         for (int r = 1; r < row; ++r) {
             System.out.print("|");
             for (int c = 0; c < col; ++c)
-                System.out.println(String.format(" %-" + (widthOfCols[c] - 2) + "s |", table[r][c]));
+                System.out.print(String.format(" %-" + (widthOfCols[c] - 2) + "s |", table[r][c]));
+            System.out.println();
         }
-        System.out.println("+" + "-".repeat(totalWidth - 2) + "+");
+
+        printHorizontal(widthOfCols);
+    }
+
+    private static void printHorizontal(int[] widthOfCols) {
+        System.out.print("+");
+        for (int widthOfCol : widthOfCols) {
+            System.out.print("-".repeat(widthOfCol));
+            System.out.print("+");
+        }
+        System.out.println();
     }
 }
