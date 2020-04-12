@@ -8,6 +8,7 @@ public class CleaningInventory extends Inventory {
         return "CLEANING";
     }
 
+    // CleaningInventory does not have additional information
     @Override
     public String getAdditionalInfo() {
         return "";
