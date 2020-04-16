@@ -7,19 +7,23 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
 (async ($) => {
 
     // part 1
-    $("nav img")[0].addEventListener("click", () => {
-        $("#actions_nav")[0].classList.toggle("expand")
+    $("nav img").addEventListener("click", () => {
+        $("#actions_nav").classList.toggle("expand")
     });
 
     // part 2
-    async function showPokemonOfTheDay() {
+    const showPokemonOfTheDay = async () => {
         const pokemonOfTheDay = await (await fetch(ENDPOINT_BASE_URL + "pokemon?random=random")).json();
-        $("#pokemon_of_the_day_col")[0].innerHTML +=
-            `<img alt="pokemon of the day" src="${ENDPOINT_BASE_URL}img/${pokemonOfTheDay.image}">`
+        $("#pokemon_of_the_day_col").innerHTML =
+            `<h3>Pokemon of the day</h3>`
+            + `<img alt="pokemon of the day" src="${ENDPOINT_BASE_URL}img/${pokemonOfTheDay.image}">`
             + `<h4>${pokemonOfTheDay.name}</h4>`
             + `<p>${pokemonOfTheDay.description}</p>`;
-    }
-
+        $("#pokemon_of_the_day_col img").addEventListener("click", await showPokemonOfTheDay);
+    };
+    $("#show_pokemon_of_the_day").addEventListener("click", await showPokemonOfTheDay);
     await showPokemonOfTheDay();
 
-})(document.querySelectorAll.bind(document));
+
+
+})(document.querySelector.bind(document));
