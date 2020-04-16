@@ -20,7 +20,6 @@ body {
 }
 
 html {
-    font-size: 10px;
     font-family: var(--font-stack);
 }
 
@@ -95,13 +94,13 @@ nav a:active, nav img:active {
     nav img {
         display: block;
     }
-    nav nav:first-of-type {
+    #home_nav {
         flex-direction: row;
     }
-    nav nav:last-of-type {
+    #actions_nav {
         height: 0;
     }
-    nav nav:last-of-type.expand {
+    #actions_nav.expand {
         height: 10.8rem;
     }
 }
@@ -125,5 +124,11 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
 }
  */
+
+#pokemon_of_the_day_col img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
 
 
