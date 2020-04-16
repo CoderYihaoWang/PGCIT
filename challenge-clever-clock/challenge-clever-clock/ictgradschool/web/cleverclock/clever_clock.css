@@ -1,0 +1,104 @@
+:root {
+    --fg-color: #3d3d3d;
+}
+
+* {
+    color: var(--fg-color);
+}
+
+.vflex {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: space-between;
+}
+
+.hflex {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    justify-content: space-around;
+    width:           100%;
+    margin:          1em 2em;
+}
+
+.page_container {
+    width:                 1000px;
+    margin:                2em auto;
+    display:               grid;
+    grid-template-rows:    auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:   "clock timer";
+}
+
+.clock, .timer {
+    border:        1px solid lightgrey;
+    margin:        0.25em;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family:     Calibri, Arial, sans-serif;
+    font-size:       30pt;
+    font-variant:    small-caps;
+    text-decoration: black underline;
+}
+
+.clock {
+    grid-area: clock;
+}
+
+.timer {
+    grid-area: timer;
+}
+
+.digital {
+    font-family: Consolas, "Courier New", monospace;
+    font-size:   40pt;
+    font-weight: bolder;
+    margin:      1em auto;
+}
+
+.date {
+    font-family: Calibri, Arial, sans-serif;
+    font-size:   20pt;
+    font-weight: bold;
+    margin:      1em auto;
+}
+
+.button {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-around;
+
+    width:           4em;
+
+    font-family:     Calibri, Arial, sans-serif;
+    font-size:       20pt;
+    font-weight:     bold;
+
+    border:          1px solid var(--fg-color);
+    border-radius:   3px;
+    box-shadow:      black 1px 1px 1px;
+    padding:         1em;
+}
+
+.button_enabled {
+    background: repeating-linear-gradient(
+                        45deg,
+                        #22ff22,
+                        #22ff22 10px,
+                        #33dd33 10px,
+                        #33dd33 20px
+                )
+}
+
+.button_disabled {
+    background: repeating-linear-gradient(
+                        45deg,
+                        #ff2222,
+                        #ff2222 10px,
+                        #dd3333 10px,
+                        #dd3333 20px
+                )
+}

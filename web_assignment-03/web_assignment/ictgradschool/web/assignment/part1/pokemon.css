@@ -1,0 +1,15 @@
+:root {
+    --nav-col-bg: #46ACC2;
+    --nav-col-fg: #FFFFFF;
+    --border-rad: 0.25em;
+    --font-stack: Calibri, 'Open Sans', sans-serif;
+    --pane-pad: 0.25em;
+    --pane-margin: 0.25em;
+    --temp-bg-red: lightcoral;
+    --temp-bg-blue: lightblue;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
