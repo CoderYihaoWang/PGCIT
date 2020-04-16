@@ -14,3 +14,116 @@ body {
     margin: 0;
 }
 
+* {
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+html {
+    font-size: 10px;
+    font-family: var(--font-stack);
+}
+
+header {
+    background-color: gray;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--nav-col-bg);
+    color: var(--nav-col-fg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav img {
+    display: none;
+    height: 2rem;
+}
+
+nav a {
+    padding: 1.2rem;
+    font-size: 1rem;
+    display: block;
+}
+
+nav a:only-of-type {
+    font-size: 1.2rem;
+}
+
+nav a:link, nav a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover, nav img:hover {
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+nav a:active, nav img:active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.container {
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+    nav img {
+        display: block;
+    }
+    nav nav:first-of-type {
+        flex-direction: row;
+    }
+    nav nav:last-of-type {
+        height: 0;
+    }
+    nav nav:last-of-type.expand {
+        height: 10.8rem;
+    }
+}
+
+.container > * {
+    background-color: var(--temp-bg-red);
+    padding: var(--pane-pad);
+    margin: var(--pane-margin);
+    border-radius: var(--border-rad);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+/* The following style aligns the "menu" text to the left
+    which makes it look more like the demo, but it looks weird,
+    and the specification does not explicitly say it should
+
+.container > *:first-child > h3 {
+    text-align: left;
+}
+ */
+
+
