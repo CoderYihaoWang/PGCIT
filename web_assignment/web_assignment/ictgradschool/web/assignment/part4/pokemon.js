@@ -26,7 +26,7 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
     $("#show_pokemon_of_the_day").addEventListener("click", await showPokemonOfTheDay);
     await showPokemonOfTheDay();
 
-    // part 3
+    // part 3 & 4
     const getPokemon = async (pokemonName) =>
         await (await fetch(ENDPOINT_BASE_URL + "pokemon?pokemon=" + pokemonName)).json();
 
@@ -42,6 +42,8 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
         const pokemon = await getPokemon(pokemonName)
             , weak = pokemon.opponents.weak_against
             , strong = pokemon.opponents.strong_against
+            , classes = pokemon.classes
+            , skills = pokemon.signature_skills
             , panel_container = $("#panel_container")
             , getWeakPanel = async () => {
                 let weakPanel = "<h3>Weak Against</h3>";
@@ -54,22 +56,49 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
                 for (const oppo of strong)
                     strongPanel += await panel(oppo);
                 return strongPanel;
+            }
+            , classPill = async (clazz) => {
+                const color = await (await fetch(ENDPOINT_BASE_URL + "keyword?keyword=" + clazz)).json();
+                return `<p><span class="pill" style="`
+                    + `color: ${color.foreground};background-color: ${color.background}">`
+                    + `${clazz}</span></p>`;
+            }
+            , getClassesPanel = async () => {
+                let classesPanel = "<h3>Class List</h3>";
+                for (const clazz of classes)
+                    classesPanel += await classPill(clazz);
+                return classesPanel;
+            }
+            , getSkillsPanel = () => {
+                let skillsPanel = "<h3>Signature Moves</h3>";
+                for (const skill of skills)
+                    skillsPanel += `<p>${skill}</p>`;
+                return skillsPanel;
             };
 
         panel_container.innerHTML =
               `<div class="flanking">${await getWeakPanel()}</div>`
             + `<div id="detail"><h2>${pokemon.name}</h2>`
-            + `<img src="${ENDPOINT_BASE_URL}img/${pokemon.image}" alt="${pokemonName}">`
-            + `<p>${pokemon.description}</p>`
+                + `<img src="${ENDPOINT_BASE_URL}img/${pokemon.image}" alt="${pokemonName}">`
+                + `<p>${pokemon.description}</p>`
+                + `<div class="attributes">`
+                    + `<div class="attributes_list">${await getClassesPanel()}</div>`
+                    + `<div class="attributes_list">${getSkillsPanel()}</div>`
+                +`</div>`
             + `</div>`
             + `<div class="flanking">${await getStrongPanel()}</div>`;
 
         panel_container.classList.add("details_expanded");
     };
 
-    const pokemons = await (await fetch(ENDPOINT_BASE_URL + "pokemon")).json();
-    for (const pokemon of pokemons)
-        $("#panel_container").innerHTML += await panel(pokemon);
+    window.showPokemons = async () => {
+        const pokemons = await (await fetch(ENDPOINT_BASE_URL + "pokemon")).json()
+            , panel_container = $("#panel_container");
+        for (const pokemon of pokemons)
+            panel_container.innerHTML += await panel(pokemon);
+        panel_container.classList.remove("details_expanded");
+    };
 
+    await showPokemons();
 
 })(window);
