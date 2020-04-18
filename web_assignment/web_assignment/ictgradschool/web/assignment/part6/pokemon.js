@@ -37,7 +37,7 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
             while (currentPokemonOfTheDay && pokemonOfTheDay.name === currentPokemonOfTheDay.innerText);
 
         $("#pokemon_of_the_day_col").innerHTML =
-            `<h3>Pokemon of the day</h3>`
+            `<h2>Pokemon of the day</h2>`
             + `<img alt="pokemon of the day" src="${ENDPOINT_BASE_URL}img/${pokemonOfTheDay.image}">`
             + `<h4>${pokemonOfTheDay.name}</h4>`
             + `<p>${pokemonOfTheDay.description}</p>`
