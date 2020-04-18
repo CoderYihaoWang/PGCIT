@@ -1,0 +1,235 @@
+:root {
+    --nav-col-bg: #46ACC2;
+    --nav-col-fg: #FFFFFF;
+    --border-rad: 0.25em;
+    --font-stack: Calibri, 'Open Sans', sans-serif;
+    --pane-pad: 0.25em;
+    --pane-margin: 0.25em;
+    --temp-bg-red: lightcoral;
+    --temp-bg-blue: lightblue;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+html {
+    font-family: var(--font-stack);
+}
+
+header {
+    background-color: gray;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--nav-col-bg);
+    color: var(--nav-col-fg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav img {
+    display: none;
+    height: 2rem;
+}
+
+nav a {
+    padding: 1.2rem;
+    font-size: 1rem;
+    display: block;
+}
+
+nav a:only-of-type {
+    font-size: 1.2rem;
+}
+
+nav a:link, nav a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav a:hover, nav img:hover {
+    background-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+nav a:active, nav img:active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.container {
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+    nav img {
+        display: block;
+    }
+    #home_nav {
+        flex-direction: row;
+    }
+    #actions_nav {
+        height: 0;
+    }
+    #actions_nav.expand {
+        height: 10.8rem;
+    }
+}
+
+.container > * {
+    background-color: var(--temp-bg-red);
+    padding: var(--pane-pad);
+    margin: var(--pane-margin);
+    border-radius: var(--border-rad);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+/* The following style aligns the "menu" text to the left
+    which makes it look more like the demo, but it looks weird,
+    and the specification does not explicitly say it should
+
+#menu_col > h3 {
+    text-align: left;
+}
+ */
+
+#pokemon_of_the_day_col img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+#pokemon_of_the_day_col img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.panel {
+    background-color: var(--nav-col-bg);
+    border-radius: var(--border-rad);
+    padding: var(--pane-pad);
+    margin: var(--pane-margin);
+    width: 20%;
+}
+
+@media (max-width: 900px) {
+    .panel {
+        width: 100%;
+    }
+}
+
+.panel img {
+    width: 100%;
+}
+
+.panel img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#panel_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.details_expanded#panel_container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    //align-items: center;
+}
+
+@media (max-width: 900px) {
+    .details_expanded#panel_container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.details_expanded#panel_container .panel {
+    width: 90%;
+}
+
+.flanking {
+    display: flex;
+    flex-direction: column;
+}
+
+#detail img {
+    display: block;
+    width: 100%;
+}
+
+.attributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid gray;
+    padding: var(--pane-pad);
+    border-radius: var(--border-rad);
+}
+
+.attributes_list {
+    padding: var(--pane-pad);
+    margin: var(--pane-margin);
+    border: 2px solid gray;
+    border-radius: var(--border-rad);
+}
+
+.attributes_list * {
+    text-align: center;
+}
+
+.pill {
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 0.5em;
+    border: 2px solid gray;
+}
+
+.button {
+    color: var(--nav-col-fg);
+    background-color: var(--nav-col-bg);
+    border-radius: var(--border-rad);
+    padding: var(--pane-pad);
+    margin: var(--pane-margin);
+    text-align: center;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
