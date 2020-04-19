@@ -5,23 +5,18 @@
     --font-stack: Calibri, 'Open Sans', sans-serif;
     --pane-pad: 0.25em;
     --pane-margin: 0.25em;
-    --temp-bg-red: lightcoral;
-    --temp-bg-blue: lightblue;
+}
+
+* {
+    transition-property: all;
+    transition-duration: 0.2s;
+    font-family: var(--font-stack);
 }
 
 body {
     padding: 0;
     margin: 0;
     background-color: #eeeeee;
-}
-
-* {
-    transition-property: all;
-    transition-duration: 0.2s;
-}
-
-html {
-    font-family: var(--font-stack);
 }
 
 header {
@@ -33,6 +28,7 @@ header img {
     display: block;
     margin: auto;
     height: 150px;
+    max-width: 100%;
 }
 
 nav {
@@ -54,7 +50,7 @@ nav a {
     display: block;
 }
 
-nav a:only-of-type {
+#home {
     font-size: 1.2rem;
 }
 
@@ -64,12 +60,12 @@ nav a:link, nav a:visited {
 }
 
 nav a:hover, nav img:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
     cursor: pointer;
 }
 
 nav a:active, nav img:active {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.5);
 }
 
 .container {
@@ -115,6 +111,11 @@ p {
     transform: scale(1.05);
 }
 
+#menu_col > * {
+    position: sticky;
+    top: 1em;
+}
+
 .panel {
     background-color: #eeeeee;
     border-radius: var(--border-rad);
@@ -126,6 +127,10 @@ p {
 .panel:hover, .button:hover {
     box-shadow: #cccccc 0 0 3px 3px;
     cursor: pointer;
+}
+
+.panel:active, .button:active {
+    transform: scale(0.95);
 }
 
 #panel_container {
@@ -143,11 +148,11 @@ p {
     width: 90%;
 }
 
-#pokemon_details_col h2 {
+.pokemon_name {
     font-weight: bolder;
     color: #ffffff;
     background-image: linear-gradient(150deg, #ea970e, #d94820, #d95142);
-    padding: 0.25em;
+    padding: 0.25em 1em;
     border-radius: 1.25em;
 }
 
@@ -171,12 +176,15 @@ p {
     font-weight: normal;
 }
 
+.attributes h3, .flanking h3 {
+    font-weight: bolder;
+}
+
 .pill {
     padding-left: 1em;
     padding-right: 1em;
     border-radius: 1em;
     border: 2px solid gray;
-
 }
 
 .button {
@@ -224,5 +232,16 @@ p {
     .details_expanded#panel_container {
         display: flex;
         flex-direction: column;
+    }
+    #detail {
+        order: -1;
+    }
+    #menu_col {
+        position: static;
+    }
+    .flanking {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
     }
 }

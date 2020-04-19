@@ -19,8 +19,8 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
     async function panel(name) {
         const pokemon = await getPokemon(name);
         return `<div class="panel" onclick="showDetail(\`${name}\`)">`
-                + `<img src=${ENDPOINT_BASE_URL}img/${pokemon.image}>`
-                + `<h4>${name}</h4>`
+                + `<img src=${ENDPOINT_BASE_URL}img/${pokemon.image} alt="${name}" title="see details">`
+                + `<h4><span class="pokemon_name">${name}</span></h4>`
             + `</div>`;
     }
 
@@ -38,8 +38,9 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
 
         $("#pokemon_of_the_day_col").innerHTML =
             `<h2>Pokemon of the day</h2>`
-            + `<img alt="pokemon of the day" src="${ENDPOINT_BASE_URL}img/${pokemonOfTheDay.image}">`
-            + `<h4>${pokemonOfTheDay.name}</h4>`
+            + `<img alt="pokemon of the day" title="change pokemon of the day" `
+                + `src="${ENDPOINT_BASE_URL}img/${pokemonOfTheDay.image}">`
+            + `<h4><span class="pokemon_name">${pokemonOfTheDay.name}</span></h4>`
             + `<p>${pokemonOfTheDay.description}</p>`
             + `<div class="button" id="show_pokemon_of_the_day_menu">Show Details</div>`;
 
@@ -48,8 +49,8 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
         $("#show_pokemon_of_the_day_menu")
             .addEventListener("click", async () => await showDetail(pokemonOfTheDay.name));
 
-        sessionStorage.setItem("pokemon_of_the_day", pokemonOfTheDay.name);
-        sessionStorage.setItem("last_updated", Date.now().toString());
+        sessionStorage.setItem("yihao_web_assignment_pokemon_of_the_day", pokemonOfTheDay.name);
+        sessionStorage.setItem("yihao_web_assignment_last_updated", Date.now().toString());
     }
 
     // update the center column the show the detail page of a the pokemon passed in
@@ -87,13 +88,13 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
             , getSkillsPanel = () => {
                 let skillsPanel = "<h3>Signature Moves</h3>";
                 for (const skill of skills)
-                    skillsPanel += `<p>${skill}</p>`;
+                    skillsPanel += `<p><span class="pill">${skill}</span></p>`;
                 return skillsPanel;
             };
 
         panel_container.innerHTML =
               `<div class="flanking">${await getWeakPanel()}</div>`
-            + `<div id="detail"><h2>${pokemon.name}</h2>`
+            + `<div id="detail"><h2 class="pokemon_name">${pokemon.name}</h2>`
                 + `<img src="${ENDPOINT_BASE_URL}img/${pokemon.image}" alt="${pokemonName}">`
                 + `<p>${pokemon.description}</p>`
                 + `<div class="attributes">`
@@ -105,7 +106,7 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
 
         panel_container.classList.add("details_expanded");
 
-        sessionStorage.setItem("detailed", pokemonName);
+        sessionStorage.setItem("yihao_web_assignment_detailed", pokemonName);
     }
 
     // show the pokemon list page in the center column
@@ -118,7 +119,7 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
         for (const pokemon of pokemons)
             panel_container.innerHTML += await panel(pokemon);
 
-        sessionStorage.removeItem("detailed");
+        sessionStorage.removeItem("yihao_web_assignment_detailed");
     }
 
     // things to be done when the window finishes loading:
@@ -138,7 +139,7 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
     $("#load_random_pokemon").onclick =
         $("#load_random_pokemon_menu").onclick =
             async () => await showDetail(await (async () => {
-                const current = sessionStorage.getItem("detailed");
+                const current = sessionStorage.getItem("yihao_web_assignment_detailed");
                 let name;
                 do
                     name = (await getPokemon()).name;
@@ -147,14 +148,15 @@ const ENDPOINT_BASE_URL = "https://trex-sandwich.com/pokesignment/";
             })());
 
     // display the pokemon of the day column, check the session first
-    const pokemonOfTheDay = sessionStorage.getItem("pokemon_of_the_day");
-    if (pokemonOfTheDay && Date.now() - sessionStorage.getItem("last_updated") < 4 * 60 * 60 * 1000)
+    const pokemonOfTheDay = sessionStorage.getItem("yihao_web_assignment_pokemon_of_the_day");
+    if (pokemonOfTheDay
+        && Date.now() - sessionStorage.getItem("yihao_web_assignment_last_updated") < 4 * 60 * 60 * 1000)
         await showPokemonOfTheDay(pokemonOfTheDay);
     else
         await showPokemonOfTheDay();
 
     // display the center column, check the session first
-    const currentPokemon = sessionStorage.getItem("detailed");
+    const currentPokemon = sessionStorage.getItem("yihao_web_assignment_detailed");
     if (currentPokemon)
         await showDetail(currentPokemon);
     else
