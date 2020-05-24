@@ -5,10 +5,6 @@ import java.awt.event.MouseEvent;
 
 public class Panel extends JPanel {
 
-    // two fonts to use
-    private static final Font LARGE = new Font(null, Font.BOLD, 30);
-    private static final Font SMALL = new Font(null, Font.BOLD | Font.ITALIC, 20);
-
     // make all position related values constants
     // so as to eliminate 'magic numbers' in code
     // and make it easier to make a change
@@ -82,14 +78,14 @@ public class Panel extends JPanel {
 
     // write the game title
     private void drawTitle(Graphics2D g) {
-        g.setColor(GameColors.DARK);
-        g.setFont(LARGE);
+        g.setColor(GameColors.FOREGROUND);
+        g.setFont(GameFonts.LARGE);
         g.drawString("Tic Tac Toe", TITLE_POSITION_X, TITLE_POSITION_Y);
     }
 
     // draw the board lines: '#'
     private void drawLines(Graphics2D g) {
-        g.setColor(GameColors.DARK);
+        g.setColor(GameColors.FOREGROUND);
         int startX = (PANEL_WIDTH - BOARD_WIDTH) / 2;
         int startY = BOARD_POSITION_Y;
         int step = BOARD_WIDTH / 3;
@@ -124,7 +120,7 @@ public class Panel extends JPanel {
         if (cell == null)
             return;
 
-        g.setColor(cell.isInLine() ? GameColors.HIGHLIGHT : GameColors.PRIMARY);
+        g.setColor(cell.isInLine() ? GameColors.HIGHLIGHT : GameColors.NORMAL);
         int step = BOARD_WIDTH / 3;
         int x = (PANEL_WIDTH - BOARD_WIDTH) / 2 + step * col + (step - PIECE_SIZE) / 2;
         int y = BOARD_POSITION_Y + step * row + (step - PIECE_SIZE) / 2;
@@ -139,7 +135,7 @@ public class Panel extends JPanel {
     // draw the score information
     private void drawScores(Graphics2D g) {
         // draw the icons: X and O
-        g.setColor(nextPiece == Piece.Cross ? GameColors.HIGHLIGHT : GameColors.DARK);
+        g.setColor(nextPiece == Piece.Cross ? GameColors.HIGHLIGHT : GameColors.FOREGROUND);
         g.drawLine(
                 ICON_POSITION_X,
                 SCORE_POSITION_Y,
@@ -152,12 +148,12 @@ public class Panel extends JPanel {
                 ICON_POSITION_X,
                 SCORE_POSITION_Y + ICON_SIZE
         );
-        g.setColor(nextPiece == Piece.Nought ? GameColors.HIGHLIGHT : GameColors.DARK);
+        g.setColor(nextPiece == Piece.Nought ? GameColors.HIGHLIGHT : GameColors.FOREGROUND);
         g.drawOval(ICON_POSITION_X, SCORE_POSITION_Y + ICON_SIZE * 2, ICON_SIZE, ICON_SIZE);
 
         // write the scores
-        g.setColor(GameColors.DARK);
-        g.setFont(LARGE);
+        g.setColor(GameColors.FOREGROUND);
+        g.setFont(GameFonts.LARGE);
         g.drawString(crossScore + "", SCORE_POSITION_X, SCORE_POSITION_Y + ICON_SIZE);
         g.drawString(noughtScore + "", SCORE_POSITION_X, SCORE_POSITION_Y + ICON_SIZE * 3);
     }
@@ -167,8 +163,8 @@ public class Panel extends JPanel {
     // because the native JButton component's style is too 'Windows Vista',
     // and does not go well with this app's overall look
     private void drawRestart(Graphics2D g) {
-        g.setColor(GameColors.DARK);
-        g.setFont(SMALL);
+        g.setColor(GameColors.FOREGROUND);
+        g.setFont(GameFonts.SMALL);
         g.drawString("Restart", RESTART_POSITION_X, RESTART_POSITION_Y);
     }
 
