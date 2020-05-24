@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36b6f7f2-0d03-487b-b44a-9bebd130dd0c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jinq.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.annotation.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.ejb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.jms.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.persistence.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.resource.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jsp.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.transaction.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mariadb-java-client-2.5.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Jinq/connection.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Jinq/jinq/Client.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Jinq/jinq/SqlExpression.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Jinq/sql/sample_db.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Jinq/util/DBConnectionUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connection.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jinq/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jinq/SqlExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sql/sample_db.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/DBConnectionUtils.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1cLy40deumynm4M74P2zrWLZdUW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\PGCIT\misc\Jinq\lib" />
+      <recent name="F:\PGCIT\misc\Jinq\src\scripts" />
+      <recent name="F:\PGCIT\misc\Jinq\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jinq.Client" />
+      <module name="Jinq" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jinq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="wany969@db.trex-sandwich.com: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="wany969@db.trex-sandwich.com: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@19d20377" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36b6f7f2-0d03-487b-b44a-9bebd130dd0c" name="Default Changelist" comment="" />
+      <created>1590321972806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590321972806</updated>
+      <workItem from="1590321976131" duration="1946000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="133" y="0" key="#Project_Structure" timestamp="1590323756309">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="133" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1590323756309" />
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590322309148">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1590322309148" />
+    <state x="340" y="0" key="DetectedRootsChooserDialog" timestamp="1590323814862">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="340" y="0" key="DetectedRootsChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1590323814862" />
+    <state x="275" y="24" key="FileChooserDialogImpl" timestamp="1590323807990">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="275" y="24" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1590323807990" />
+    <state width="1228" height="246" key="GridCell.Tab.0.bottom" timestamp="1590323933335">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1228" height="246" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590323933335" />
+    <state width="1228" height="246" key="GridCell.Tab.0.center" timestamp="1590323933334">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1228" height="246" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1590323933334" />
+    <state width="1228" height="246" key="GridCell.Tab.0.left" timestamp="1590323933334">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1228" height="246" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1590323933334" />
+    <state width="1228" height="246" key="GridCell.Tab.0.right" timestamp="1590323933335">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1228" height="246" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1590323933335" />
+    <state x="0" y="0" key="SettingsEditor" timestamp="1590323847379">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590323847379" />
+    <state x="279" y="192" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1590323039565">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="279" y="192" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1590323039565" />
+  </component>
+</project>
